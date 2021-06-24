@@ -11,7 +11,10 @@
     <string name="password_error">Please enter a correct password</string>
     <string name="full_name_error">Please enter your full name</string>
     <string name="input_valid">Input is valid!</string>
-<!--    Lottie files-->
+    <!--    Lottie files-->
     <string name="lottie_owl_coin_shower">owl_coin_shower.json</string>
+
+    <string name="accounts_feature_title">Accounts</string>
+    <string name="error_feature_title">Generic Error Screen</string>
 
 </resources>

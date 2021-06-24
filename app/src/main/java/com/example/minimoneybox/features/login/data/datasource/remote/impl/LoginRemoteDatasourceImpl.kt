@@ -4,8 +4,9 @@ import com.example.minimoneybox.features.login.data.datasource.remote.LoginRemot
 import com.example.minimoneybox.features.login.data.datasource.remote.model.AuthenticationRequest
 import com.example.minimoneybox.features.login.data.datasource.remote.model.AuthenticationResponse
 import com.example.minimoneybox.features.login.data.service.LoginService
+import javax.inject.Inject
 
-class LoginRemoteDatasourceImpl(
+class LoginRemoteDatasourceImpl @Inject constructor(
     private val loginService: LoginService,
 ) : LoginRemoteDatasource {
 

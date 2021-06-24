@@ -11,6 +11,7 @@ object Version {
     const val okHttp = "4.9.1"
     const val gson = "2.8.7"
     const val gsonRetrofitConverter = "2.9.0"
+    const val workManager = "2.5.0"
 
     const val junit = "4.13.2"
     const val extJunit = "1.1.2"
@@ -26,5 +27,8 @@ object Version {
 
     const val mockk = "1.10.6"
     const val securityCrypto = "1.1.0-alpha03"
+    const val coreTesting = "2.1.0"
+    const val runner = "1.3.0"
+    const val rules = "1.3.0"
 
 }

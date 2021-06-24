@@ -4,10 +4,11 @@ import com.example.minimoneybox.common.storage.Storage
 import com.example.minimoneybox.features.login.data.datasource.local.LoginLocalDatasource
 import com.example.minimoneybox.features.login.domain.model.UserCredential
 import com.google.gson.Gson
+import javax.inject.Inject
 
 private const val USER_CREDENTIAL = "user-credential"
 
-class LoginLocalDatasourceImpl(
+class LoginLocalDatasourceImpl @Inject constructor(
     private val preferences: Storage.Preferences,
     private val gson: Gson,
 ) : LoginLocalDatasource {

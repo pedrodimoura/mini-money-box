@@ -35,7 +35,7 @@ class LoginRemoteDatasourceTest {
         runBlocking {
             val mockRequest = mockk<AuthenticationRequest>()
             val expectedResult = AuthenticationResponse(
-                SessionMetadataResponse("bearer-token")
+                SessionMetadataResponse("bearer-token", 10)
             )
             coEvery { loginService.authenticate(any()) } returns expectedResult
 

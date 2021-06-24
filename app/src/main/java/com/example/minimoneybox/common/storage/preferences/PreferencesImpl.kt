@@ -5,11 +5,13 @@ import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 import com.example.minimoneybox.common.storage.Storage
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 
 private const val PREFS_NAME = "mini-money-box-preferences"
 
-class PreferencesImpl(
-    private val context: Context,
+class PreferencesImpl @Inject constructor(
+    @ApplicationContext private val context: Context,
 ) : Storage.Preferences {
 
     private val masterKey = MasterKey

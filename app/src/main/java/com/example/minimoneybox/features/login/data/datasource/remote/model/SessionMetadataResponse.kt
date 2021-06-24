@@ -4,5 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class SessionMetadataResponse(
     @SerializedName("BearerToken")
-    val bearerToken: String, // This comma it helps to avoid unnecessary changes in Pull Request to review.
+    val bearerToken: String,
+    @SerializedName("ExpiresIn")
+    val expiresIn: Int, // This comma it helps to avoid unnecessary changes in Pull Request to review.
 )

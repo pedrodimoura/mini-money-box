@@ -7,6 +7,7 @@ object Libs {
     const val material = "com.google.android.material:material:${Version.material}"
     const val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Version.constraintLayout}"
+    const val workManager = "androidx.work:work-runtime-ktx:${Version.workManager}"
 
     const val lifecycleViewModelKtx =
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.lifecycle}"

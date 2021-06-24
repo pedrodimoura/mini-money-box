@@ -12,7 +12,7 @@
   <path
       android:pathData="M71.98,91.889C71.98,81.949 63.925,73.89 53.989,73.89C44.053,73.89 36,81.949 36,91.889L71.98,91.889Z"
       android:strokeWidth="1"
-      android:fillColor="#006179"
+        android:fillColor="#006179"
       android:fillType="evenOdd"
       android:strokeColor="#00000000"/>
 </vector>

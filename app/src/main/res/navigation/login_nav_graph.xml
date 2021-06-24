@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_nav_graph"
+    app:startDestination="@id/fragmentLogin">
+
+    <fragment
+        android:id="@+id/fragmentLogin"
+        android:name="com.example.minimoneybox.features.login.presentation.fragment.LoginFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/fromFragmentLoginToAccountsActivity"
+            app:destination="@id/activityAccounts" />
+        <action
+            android:id="@+id/fromFragmentLoginToErrorFragment"
+            app:destination="@id/fragmentError" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentError"
+        android:name="com.example.minimoneybox.common.presentation.fragment.ErrorFragment"
+        tools:layout="@layout/fragment_error" />
+
+    <activity
+        android:id="@+id/activityAccounts"
+        android:name="com.example.minimoneybox.features.accounts.presentation.AccountsActivity"
+        tools:layout="@layout/activity_accounts" />
+
+</navigation>

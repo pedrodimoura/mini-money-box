@@ -3,6 +3,8 @@ plugins {
     kotlin("android")
     kotlin("android.extensions")
     kotlin("kapt")
+    id("dagger.hilt.android.plugin")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 repositories {
@@ -18,7 +20,7 @@ android {
         targetSdkVersion(30)
         versionCode = 1
         versionName = "1.0"
-        testInstrumentationRunner("android.support.test.runner.AndroidJUnitRunner")
+        testInstrumentationRunner("androidx.test.runner.AndroidJUnitRunner")
     }
     buildTypes {
         getByName("release") {
@@ -28,10 +30,16 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "BASE_URL", "\"https://www.google.com.br/\"")
+            buildConfigField("String", "APP_ID_HEADER", "\"AppId\"")
+            buildConfigField("String", "APP_ID", "\"3a97b932a9d449c981b595\"")
         }
         getByName("debug") {
             isMinifyEnabled = false
             isDebuggable = true
+            buildConfigField("String", "BASE_URL", "\"https://www.google.com/\"")
+            buildConfigField("String", "APP_ID_HEADER", "\"AppId\"")
+            buildConfigField("String", "APP_ID", "\"3a97b932a9d449c981b595\"")
         }
     }
     compileOptions {
@@ -41,6 +49,10 @@ android {
 
     buildFeatures {
         viewBinding = true
+    }
+
+    testOptions {
+        unitTests.isReturnDefaultValues = true
     }
 }
 
@@ -54,6 +66,7 @@ dependencies {
     implementation(Libs.material)
     implementation(Libs.constraintLayout)
     implementation(Libs.securityCrypto)
+    implementation(Libs.workManager)
 
     implementation(Libs.lifecycleViewModelKtx)
     implementation(Libs.lifecycleLiveDataKtx)
@@ -82,14 +95,16 @@ dependencies {
 
     implementation(Libs.navigationFragmentKtx)
     implementation(Libs.navigationUiKtx)
+    androidTestImplementation(TestLibs.navigation)
 
     // Check if is necessary
     debugImplementation(TestLibs.fragmentTesting)
 
     testImplementation(TestLibs.mockk)
-    androidTestImplementation(TestLibs.mockkAndroid)
-
     testImplementation(TestLibs.junit)
+    testImplementation(TestLibs.coreTesting)
+
     androidTestImplementation(TestLibs.extJunit)
     androidTestImplementation(TestLibs.espressoCore)
+    androidTestImplementation(TestLibs.espressoIntent)
 }
