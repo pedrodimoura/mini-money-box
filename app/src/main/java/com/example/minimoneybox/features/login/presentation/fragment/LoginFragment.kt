@@ -58,7 +58,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun navigateToAccountsActivity() {
-        findNavController().navigate(LoginFragmentDirections.fromFragmentLoginToAccountsActivity())
+        val name: String = viewBinding.etName.text.toString()
+        findNavController().navigate(
+            LoginFragmentDirections.fromFragmentLoginToAccountsActivity(name)
+        )
     }
 
     private fun navigateToErrorFragment() {

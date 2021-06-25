@@ -22,16 +22,24 @@ import retrofit2.converter.gson.GsonConverterFactory
 @InstallIn(SingletonComponent::class)
 object NetworkHiltModuleTest {
 
+    private const val APP_ID_KEY = "AppId"
+    private const val APP_VERSION_KEY = "appVersion"
+    private const val API_VERSION_KEY = "apiVersion"
+    private const val CONTENT_TYPE_KEY = "Content-Type"
+    private const val CONTENT_TYPE = "application/json"
+
     @ApiKeyInterceptor
     @Provides
     fun providesApiKeyInterceptor(): Interceptor {
         return Interceptor { chain ->
             val request = chain.request()
 
-            val newUrl = request.url.newBuilder()
-                .addQueryParameter(BuildConfig.APP_ID_HEADER, BuildConfig.APP_ID).build()
-
-            val newRequest = request.newBuilder().url(newUrl).build()
+            val newRequest = request.newBuilder()
+                .addHeader(APP_ID_KEY, BuildConfig.APP_ID)
+                .addHeader(APP_VERSION_KEY, BuildConfig.VERSION_NAME)
+                .addHeader(API_VERSION_KEY, BuildConfig.API_VERSION)
+                .addHeader(CONTENT_TYPE_KEY, CONTENT_TYPE)
+                .build()
 
             chain.proceed(newRequest)
         }

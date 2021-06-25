@@ -1,8 +1,6 @@
 package com.example.minimoneybox.features.login.di
 
 import com.example.minimoneybox.common.networking.HttpClient
-import com.example.minimoneybox.common.storage.Storage
-import com.example.minimoneybox.common.storage.preferences.PreferencesImpl
 import com.example.minimoneybox.features.login.data.datasource.local.LoginLocalDatasource
 import com.example.minimoneybox.features.login.data.datasource.local.impl.LoginLocalDatasourceImpl
 import com.example.minimoneybox.features.login.data.datasource.remote.LoginRemoteDatasource
@@ -34,11 +32,6 @@ abstract class LoginFeatureDataModule {
     abstract fun bindsLoginLocalDatasource(
         loginLocalDatasourceImpl: LoginLocalDatasourceImpl,
     ): LoginLocalDatasource
-
-    @Binds
-    abstract fun bindsStoragePreferences(
-        preferencesImpl: PreferencesImpl,
-    ): Storage.Preferences
 
     @Module
     @InstallIn(SingletonComponent::class)

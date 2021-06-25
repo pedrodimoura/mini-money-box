@@ -1,7 +1,6 @@
 plugins {
     id("com.android.application")
     kotlin("android")
-    kotlin("android.extensions")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
     id("androidx.navigation.safeargs.kotlin")
@@ -13,15 +12,15 @@ repositories {
 }
 
 android {
-    compileSdkVersion(30)
-    buildToolsVersion("30.0.3")
+    compileSdkVersion(AppConfiguration.compileVersion)
+    buildToolsVersion(AppConfiguration.buildTools)
     defaultConfig {
-        applicationId("com.example.minimoneybox")
-        minSdkVersion(21)
-        targetSdkVersion(30)
-        versionCode = 1
-        versionName = "1.0"
-        testInstrumentationRunner("com.example.minimoneybox.common.HiltAndroidRunner")
+        applicationId(AppConfiguration.appId)
+        minSdkVersion(AppConfiguration.minSdk)
+        targetSdkVersion(AppConfiguration.targetSdk)
+        versionCode = AppConfiguration.versionCode
+        versionName = AppConfiguration.versionName
+        testInstrumentationRunner(AppConfiguration.instrumentationRunner)
     }
 
     buildTypes {
@@ -32,16 +31,16 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            buildConfigField("String", "BASE_URL", "\"https://www.google.com.br/\"")
-            buildConfigField("String", "APP_ID_HEADER", "\"AppId\"")
+            buildConfigField("String", "BASE_URL", "\"https://api-test01.moneyboxapp.com/\"")
             buildConfigField("String", "APP_ID", "\"3a97b932a9d449c981b595\"")
+            buildConfigField("String", "API_VERSION", "\"3.0.0\"")
         }
         getByName("debug") {
             isMinifyEnabled = false
             isDebuggable = true
-            buildConfigField("String", "BASE_URL", "\"https://www.google.com/\"")
-            buildConfigField("String", "APP_ID_HEADER", "\"AppId\"")
+            buildConfigField("String", "BASE_URL", "\"https://api-test01.moneyboxapp.com/\"")
             buildConfigField("String", "APP_ID", "\"3a97b932a9d449c981b595\"")
+            buildConfigField("String", "API_VERSION", "\"3.0.0\"")
         }
     }
 
@@ -126,3 +125,5 @@ dependencies {
     androidTestImplementation(TestLibs.mockkAndroid)
     androidTestImplementation(TestLibs.dexMaker)
 }
+
+

@@ -11,7 +11,12 @@
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/fromFragmentLoginToAccountsActivity"
-            app:destination="@id/activityAccounts" />
+            app:destination="@id/activityAccounts">
+            <argument
+                android:name="name"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
         <action
             android:id="@+id/fromFragmentLoginToErrorFragment"
             app:destination="@id/fragmentError" />
@@ -25,6 +30,11 @@
     <activity
         android:id="@+id/activityAccounts"
         android:name="com.example.minimoneybox.features.accounts.presentation.AccountsActivity"
-        tools:layout="@layout/activity_accounts" />
+        tools:layout="@layout/activity_accounts">
+        <argument
+            android:name="name"
+            app:argType="string"
+            app:nullable="true" />
+    </activity>
 
 </navigation>
