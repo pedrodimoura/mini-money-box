@@ -12,7 +12,7 @@ class RetrofitClientTest(
 
     private val retrofit by lazy {
         Retrofit.Builder()
-            .baseUrl(mockWebServer.url("/"))
+            .baseUrl(mockWebServer.url("/").toString())
             .addConverterFactory(GsonConverterFactory.create())
             .client(
                 OkHttpClient

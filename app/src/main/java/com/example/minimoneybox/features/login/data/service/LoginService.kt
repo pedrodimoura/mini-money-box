@@ -5,11 +5,12 @@ import com.example.minimoneybox.features.login.data.datasource.remote.model.Auth
 import retrofit2.http.Body
 import retrofit2.http.POST
 
+const val USERS_LOGIN_ENDPOINT = "users/login"
+
 interface LoginService {
 
-    @POST("users/login")
+    @POST(USERS_LOGIN_ENDPOINT)
     suspend fun authenticate(
         @Body authenticationRequest: AuthenticationRequest
     ): AuthenticationResponse
-
 }

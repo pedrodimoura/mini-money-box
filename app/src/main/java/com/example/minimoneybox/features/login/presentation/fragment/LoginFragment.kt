@@ -66,6 +66,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun showLoading(show: Boolean) {
-        Log.i(TAG, "showLoading: $show")
+        Log.i(TAG, "showLoading: $show") // TODO: Remove this later
     }
 }

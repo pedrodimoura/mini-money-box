@@ -1,39 +1,68 @@
 package com.example.minimoneybox.features.login.presentation
 
-import androidx.test.ext.junit.rules.ActivityScenarioRule
+import androidx.navigation.Navigation
+import androidx.test.core.app.ActivityScenario
+import androidx.test.core.app.launchActivity
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.minimoneybox.R
+import com.example.minimoneybox.common.NetworkingTest
+import com.example.minimoneybox.common.di.NetworkHiltModule
 import com.example.minimoneybox.features.login.LoginActivity
+import com.example.minimoneybox.features.login.data.service.USERS_LOGIN_ENDPOINT
 import com.example.minimoneybox.features.login.robot.LoginRobot
-import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
-import org.junit.Rule
+import dagger.hilt.android.testing.UninstallModules
+import java.net.HttpURLConnection
+import okhttp3.mockwebserver.Dispatcher
+import okhttp3.mockwebserver.MockResponse
+import okhttp3.mockwebserver.RecordedRequest
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
+@UninstallModules(NetworkHiltModule::class)
 @HiltAndroidTest
 @RunWith(AndroidJUnit4::class)
-class LoginActivityTest {
+class LoginActivityTest : NetworkingTest() {
 
-    // Inject here fake modules
+    private lateinit var loginActivityScenario: ActivityScenario<LoginActivity>
 
-    @get:Rule
-    var hiltRule = HiltAndroidRule(this)
+    private val loginDispatcher = object : Dispatcher() {
+        override fun dispatch(request: RecordedRequest): MockResponse {
+            val url = request.path.toString()
+            return when {
+                url.contains(USERS_LOGIN_ENDPOINT) -> MockResponse()
+                    .setResponseCode(HttpURLConnection.HTTP_OK)
+                    .setBody(readStringFile("responses/authentication_response.json"))
+                else -> MockResponse()
+                    .setResponseCode(HttpURLConnection.HTTP_NOT_FOUND)
+            }
+        }
+    }
 
-    @get:Rule
-    var activityScenario = ActivityScenarioRule(LoginActivity::class.java)
+    @Before
+    override fun setup() {
+        super.setup()
+        super.setDispatcher(loginDispatcher)
+        loginActivityScenario = launchActivity()
+        loginActivityScenario.onActivity {
+            navController.setGraph(R.navigation.login_nav_graph)
+
+            Navigation.setViewNavController(
+                it.requireViewById(R.id.activityMainRoot),
+                navController
+            )
+        }
+    }
 
     @Test
-    fun shouldShowAccountsActivity() {
-        val loginRobot = LoginRobot(activityScenario)
-
-        loginRobot.email("email@email.com")
-        loginRobot.password("1234")
-        loginRobot.name("Pedro Moura")
-        loginRobot.closeKeyboard()
-
-        val loginResult = loginRobot.authenticate()
-
-        loginResult.animationWasStarted()
-        loginResult.isSuccess()
+    fun networkUiTesting() {
+        LoginRobot()
+            .typeEmail("email@email.com")
+            .typePassword("1234")
+            .typeName("Pedro Moura")
+            .closeSoftKeyboard()
+            .authenticate()
+            .accountScreenIsShowing()
     }
 }

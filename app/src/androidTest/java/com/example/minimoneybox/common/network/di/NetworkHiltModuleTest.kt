@@ -1,33 +1,26 @@
-package com.example.minimoneybox.common.di
+package com.example.minimoneybox.common.network.di
 
 import android.util.Log
 import com.example.minimoneybox.BuildConfig
+import com.example.minimoneybox.common.di.ApiKeyInterceptor
+import com.example.minimoneybox.common.di.LoggingInterceptor
+import com.example.minimoneybox.common.di.OK_HTTP_LOGGING_TAG
 import com.example.minimoneybox.common.networking.HttpClient
 import com.example.minimoneybox.common.networking.retrofit.RetrofitClientImpl
+import com.example.minimoneybox.common.testUrl
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Qualifier
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.converter.gson.GsonConverterFactory
 
-@Qualifier
-@Retention(AnnotationRetention.RUNTIME)
-annotation class ApiKeyInterceptor
-
-@Qualifier
-@Retention(AnnotationRetention.RUNTIME)
-annotation class LoggingInterceptor
-
-const val OK_HTTP_LOGGING_TAG = "OK_HTTP_LOGGING"
-
 @Module
 @InstallIn(SingletonComponent::class)
-object NetworkHiltModule {
+object NetworkHiltModuleTest {
 
     @ApiKeyInterceptor
     @Provides
@@ -77,6 +70,5 @@ object NetworkHiltModule {
     fun providesRetrofitHttpClient(
         okHttpClient: OkHttpClient,
         gsonConverterFactory: GsonConverterFactory,
-    ): HttpClient.RetrofitClient =
-        RetrofitClientImpl(BuildConfig.BASE_URL, okHttpClient, gsonConverterFactory)
+    ): HttpClient.RetrofitClient = RetrofitClientImpl(testUrl, okHttpClient, gsonConverterFactory)
 }

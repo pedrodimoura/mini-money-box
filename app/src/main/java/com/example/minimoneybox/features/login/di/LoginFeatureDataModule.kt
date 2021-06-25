@@ -22,22 +22,22 @@ abstract class LoginFeatureDataModule {
 
     @Binds
     abstract fun bindsRepository(
-        loginRepositoryImpl: LoginRepositoryImpl
+        loginRepositoryImpl: LoginRepositoryImpl,
     ): LoginRepository
 
     @Binds
     abstract fun bindsLoginRemoteDatasource(
-        loginRemoteDatasourceImpl: LoginRemoteDatasourceImpl
+        loginRemoteDatasourceImpl: LoginRemoteDatasourceImpl,
     ): LoginRemoteDatasource
 
     @Binds
     abstract fun bindsLoginLocalDatasource(
-        loginLocalDatasourceImpl: LoginLocalDatasourceImpl
+        loginLocalDatasourceImpl: LoginLocalDatasourceImpl,
     ): LoginLocalDatasource
 
     @Binds
     abstract fun bindsStoragePreferences(
-        preferencesImpl: PreferencesImpl
+        preferencesImpl: PreferencesImpl,
     ): Storage.Preferences
 
     @Module
@@ -45,8 +45,7 @@ abstract class LoginFeatureDataModule {
     object LoginServiceModule {
         @Provides
         fun providesLoginService(
-            retrofitClient: HttpClient.RetrofitClient
+            retrofitClient: HttpClient.RetrofitClient,
         ): LoginService = retrofitClient.create(LoginService::class.java)
     }
-
 }

@@ -9,6 +9,7 @@ plugins {
 
 repositories {
     google()
+    mavenCentral()
 }
 
 android {
@@ -20,8 +21,9 @@ android {
         targetSdkVersion(30)
         versionCode = 1
         versionName = "1.0"
-        testInstrumentationRunner("androidx.test.runner.AndroidJUnitRunner")
+        testInstrumentationRunner("com.example.minimoneybox.common.HiltAndroidRunner")
     }
+
     buildTypes {
         getByName("release") {
             isMinifyEnabled = true
@@ -42,6 +44,7 @@ android {
             buildConfigField("String", "APP_ID", "\"3a97b932a9d449c981b595\"")
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -53,6 +56,15 @@ android {
 
     testOptions {
         unitTests.isReturnDefaultValues = true
+        unitTests.isIncludeAndroidResources = true
+    }
+
+    hilt {
+        enableTransformForLocalTests = true
+    }
+
+    sourceSets {
+        getByName("androidTest").assets.srcDirs("src/debug/assets")
     }
 }
 
@@ -77,7 +89,6 @@ dependencies {
 
     implementation(Libs.okHttp)
     implementation(Libs.loggingInterceptor)
-    testImplementation(TestLibs.mockWebServer)
 
     implementation(Libs.gson)
     implementation(Libs.gsonRetrofitConverter)
@@ -103,8 +114,15 @@ dependencies {
     testImplementation(TestLibs.mockk)
     testImplementation(TestLibs.junit)
     testImplementation(TestLibs.coreTesting)
+    testImplementation(TestLibs.mockWebServer)
+
 
     androidTestImplementation(TestLibs.extJunit)
     androidTestImplementation(TestLibs.espressoCore)
     androidTestImplementation(TestLibs.espressoIntent)
+    androidTestImplementation(TestLibs.mockWebServer)
+    androidTestImplementation(TestLibs.coreKtxTesting)
+    androidTestImplementation(TestLibs.okHttpIdlingResource)
+    androidTestImplementation(TestLibs.mockkAndroid)
+    androidTestImplementation(TestLibs.dexMaker)
 }

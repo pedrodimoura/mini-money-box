@@ -26,9 +26,10 @@ object Version {
     const val navigation = "2.3.5"
 
     const val mockk = "1.10.6"
+    const val dexMaker = "2.28.1"
     const val securityCrypto = "1.1.0-alpha03"
     const val coreTesting = "2.1.0"
-    const val runner = "1.3.0"
-    const val rules = "1.3.0"
+    const val coreKtxTest = "1.3.0"
+    const val okHttpIdlingResource = "1.0.0"
 
 }

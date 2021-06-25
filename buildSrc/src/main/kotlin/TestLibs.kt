@@ -11,10 +11,13 @@ object TestLibs {
     const val fragmentTesting = "androidx.fragment:fragment-testing:${Version.fragmentKtx}"
 
     const val mockk = "io.mockk:mockk:${Version.mockk}"
+    const val mockkAndroid = "io.mockk:mockk-android:${Version.mockk}"
+    const val dexMaker = "com.linkedin.dexmaker:dexmaker:${Version.dexMaker}"
 
     const val coreTesting = "androidx.arch.core:core-testing:${Version.coreTesting}"
+    const val coreKtxTesting = "androidx.test:core-ktx:${Version.coreKtxTest}"
 
-    const val runner = "androidx.test:runner:${Version.runner}"
-    const val rules = "androidx.test:rules:${Version.rules}"
     const val navigation = "androidx.navigation:navigation-testing:${Version.navigation}"
+    const val okHttpIdlingResource =
+        "com.jakewharton.espresso:okhttp3-idling-resource:${Version.okHttpIdlingResource}"
 }
