@@ -4,7 +4,7 @@ import com.example.minimoneybox.features.login.data.datasource.remote.impl.Login
 import com.example.minimoneybox.features.login.data.datasource.remote.model.AuthenticationRequest
 import com.example.minimoneybox.features.login.data.datasource.remote.model.AuthenticationResponse
 import com.example.minimoneybox.features.login.data.datasource.remote.model.SessionMetadataResponse
-import com.example.minimoneybox.features.login.data.service.LoginService
+import com.example.minimoneybox.features.login.data.datasource.remote.service.LoginService
 import io.mockk.clearAllMocks
 import io.mockk.coEvery
 import io.mockk.mockk

@@ -26,6 +26,6 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".features.accounts.presentation.AccountsActivity" />
+        <activity android:name=".features.account.presentation.AccountsActivity" />
     </application>
 </manifest>

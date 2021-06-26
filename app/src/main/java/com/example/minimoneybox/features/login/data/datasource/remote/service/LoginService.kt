@@ -1,4 +1,4 @@
-package com.example.minimoneybox.features.login.data.service
+package com.example.minimoneybox.features.login.data.datasource.remote.service
 
 import com.example.minimoneybox.features.login.data.datasource.remote.model.AuthenticationRequest
 import com.example.minimoneybox.features.login.data.datasource.remote.model.AuthenticationResponse

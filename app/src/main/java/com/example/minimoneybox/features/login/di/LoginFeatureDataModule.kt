@@ -6,7 +6,7 @@ import com.example.minimoneybox.features.login.data.datasource.local.impl.LoginL
 import com.example.minimoneybox.features.login.data.datasource.remote.LoginRemoteDatasource
 import com.example.minimoneybox.features.login.data.datasource.remote.impl.LoginRemoteDatasourceImpl
 import com.example.minimoneybox.features.login.data.repository.LoginRepositoryImpl
-import com.example.minimoneybox.features.login.data.service.LoginService
+import com.example.minimoneybox.features.login.data.datasource.remote.service.LoginService
 import com.example.minimoneybox.features.login.domain.repository.LoginRepository
 import dagger.Binds
 import dagger.Module

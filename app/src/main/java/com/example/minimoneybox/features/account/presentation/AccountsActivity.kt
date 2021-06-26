@@ -1,4 +1,4 @@
-package com.example.minimoneybox.features.accounts.presentation
+package com.example.minimoneybox.features.account.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.navArgs
