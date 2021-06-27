@@ -13,13 +13,15 @@
     <string name="input_valid">Input is valid!</string>
     <!--    Lottie files-->
     <string name="lottie_owl_coin_shower">owl_coin_shower.json</string>
+    <string name="lottie_loading">coin_loading.json</string>
 
-    <string name="accounts_feature_title">Accounts</string>
     <string name="error_feature_title">Generic Error Screen</string>
 
     <!-- Account Activity -->
-    <string name="account_activity_default_greeting_text"><![CDATA[<b>Hello!</b>]]></string>
-    <string name="account_activity_greeting_text"><![CDATA[Hello, <br><b>%s!</b>]]></string>
+    <string name="account_activity_greeting_no_name">Hello!</string>
+    <string name="account_activity_greeting_header_with_name">Hello,</string>
+    <string name="account_activity_greeting_body">%s!</string>
+    <string name="loading_account_information_message">Wait a sec&#8230; \nFetching your account information</string>
 
     <string name="text_view_plan_value">PlanValue:</string>
     <string name="text_view_moneybox">Moneybox:</string>

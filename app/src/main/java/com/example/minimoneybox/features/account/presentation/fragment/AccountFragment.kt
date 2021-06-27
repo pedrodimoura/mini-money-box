@@ -3,7 +3,6 @@ package com.example.minimoneybox.features.account.presentation.fragment
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.core.text.HtmlCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -15,6 +14,7 @@ import com.example.minimoneybox.common.presentation.fragment.onAction
 import com.example.minimoneybox.common.presentation.fragment.onStateChanged
 import com.example.minimoneybox.databinding.FragmentAccountBinding
 import com.example.minimoneybox.features.account.domain.model.AccountInformation
+import com.example.minimoneybox.features.account.presentation.adapter.AccountItemDecoration
 import com.example.minimoneybox.features.account.presentation.adapter.AccountRecyclerViewAdapter
 import com.example.minimoneybox.features.account.presentation.viewmodel.AccountAction
 import com.example.minimoneybox.features.account.presentation.viewmodel.AccountViewModel
@@ -54,8 +54,7 @@ class AccountFragment : Fragment(R.layout.fragment_account) {
     private fun observeActions() {
         onAction(viewModel) { action ->
             when (action) {
-                is AccountAction.ShowAccountInformationOnUI ->
-                    showAccountInformationOnUI(action.accountInformation)
+                is AccountAction.ShowAccountInformationOnUI -> showAccountInformationOnUI(action.accountInformation)
                 is AccountAction.OpenErrorScreen -> Log.i(TAG, "Error: ${action.message}")
                 is AccountAction.LogoutUser -> {
                     requireActivity().finish()
@@ -66,26 +65,35 @@ class AccountFragment : Fragment(R.layout.fragment_account) {
     }
 
     private fun inflateArgumentsOnView() {
-        val greetingsMessage = when {
-            args.name.isNullOrEmpty() -> getString(R.string.account_activity_default_greeting_text)
-            else -> getString(R.string.account_activity_greeting_text, args.name)
+        when {
+            args.name.isNullOrEmpty() -> {
+                viewBinding.greetingsBodyTextView.text =
+                    getString(R.string.account_activity_greeting_no_name)
+            }
+            else -> {
+                viewBinding.greetingsHeaderTextView.text =
+                    getString(R.string.account_activity_greeting_header_with_name)
+                viewBinding.greetingsBodyTextView.text =
+                    getString(R.string.account_activity_greeting_body, args.name)
+            }
         }
-
-        viewBinding.accountsTextView.text = HtmlCompat.fromHtml(
-            greetingsMessage,
-            HtmlCompat.FROM_HTML_MODE_LEGACY
-        )
     }
 
     private fun setupAccountRecyclerViewAdapter() {
         viewBinding.recyclerViewAccounts.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = accountRecyclerViewAdapter
+            addItemDecoration(AccountItemDecoration())
         }
     }
 
     private fun showLoading(show: Boolean) {
-        Log.i(TAG, "showLoading: $show")
+        viewBinding.loadingLottieAnimation.isVisible = show
+        viewBinding.loadingMessageTextView.isVisible = show
+        when {
+            show -> viewBinding.loadingLottieAnimation.playAnimation()
+            else -> viewBinding.loadingLottieAnimation.cancelAnimation()
+        }
     }
 
     private fun showContent(show: Boolean) {
@@ -93,7 +101,6 @@ class AccountFragment : Fragment(R.layout.fragment_account) {
     }
 
     private fun showAccountInformationOnUI(accountInformation: AccountInformation) {
-        Log.i(TAG, "showAccountInformationOnUI: ${accountInformation.accounts.size}")
         accountRecyclerViewAdapter.submitList(accountInformation.accounts)
     }
 

@@ -3,19 +3,68 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true">
 
-    <TextView
-        android:id="@+id/accountsTextView"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/greetingsLinearLayout"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="200dp"
         android:background="@color/aqua_50"
         android:gravity="bottom|center_horizontal"
-        android:paddingBottom="16dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/account_activity_default_greeting_text" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/greetingsHeaderTextView"
+            style="@style/TextAppearance.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom|center_horizontal"
+            android:textSize="18sp"
+            tools:text="Hello," />
+
+        <TextView
+            android:id="@+id/greetingsBodyTextView"
+            style="@style/TextAppearance.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom|center_horizontal"
+            android:paddingBottom="@dimen/margin_default"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            tools:text="Pedro!" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loadingLottieAnimation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:lottie_scale="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/greetingsLinearLayout"
+        app:lottie_autoPlay="false"
+        app:lottie_fileName="@string/lottie_loading"
+        app:lottie_loop="true" />
+
+    <TextView
+        android:id="@+id/loadingMessageTextView"
+        style="@style/TextAppearance.Regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_default"
+        android:gravity="center"
+        android:text="@string/loading_account_information_message"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loadingLottieAnimation" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewAccounts"
@@ -25,7 +74,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/accountsTextView"
+        app:layout_constraintTop_toBottomOf="@id/greetingsLinearLayout"
         tools:itemCount="3"
         tools:listitem="@layout/fragment_account_item"
         tools:visibility="visible" />

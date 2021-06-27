@@ -28,6 +28,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_email"
+            style="@style/TextAppearance.Regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_email"
@@ -49,6 +50,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_password"
+            style="@style/TextAppearance.Regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_password"
@@ -71,6 +73,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_name"
+            style="@style/TextAppearance.Regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_full_name"
@@ -89,7 +92,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintWidth_percent="0.4"
-        app:lottie_fileName="@string/lottie_owl_coin_shower" />
+        app:lottie_fileName="@string/lottie_owl_coin_shower"
+        app:lottie_loop="true" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_sign_in"

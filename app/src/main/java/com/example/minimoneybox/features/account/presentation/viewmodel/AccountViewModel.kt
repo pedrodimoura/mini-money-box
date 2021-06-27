@@ -21,8 +21,8 @@ class AccountViewModel @Inject constructor(
             runCatching {
                 fetchAccountInformationUseCase()
             }.onSuccess {
-                sendAction { AccountAction.ShowAccountInformationOnUI(it) }
                 setState { currentState -> currentState.showContent() }
+                sendAction { AccountAction.ShowAccountInformationOnUI(it) }
             }.onFailure { throwable ->
                 sendAction {
                     when (throwable) {

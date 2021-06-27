@@ -1,7 +1,6 @@
 package com.example.minimoneybox.features.login.presentation.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -31,7 +30,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private fun setupViews() {
         viewBinding.btnSignIn.setOnClickListener {
-            viewBinding.animation.playAnimation()
             viewModel.authenticate(
                 LoginParams(
                     viewBinding.etEmail.text.toString(),
@@ -70,6 +68,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun showLoading(show: Boolean) {
-        Log.i(TAG, "showLoading: $show") // TODO: Remove this later
+        when {
+            show -> viewBinding.animation.playAnimation()
+            else -> viewBinding.animation.cancelAnimation()
+        }
     }
 }

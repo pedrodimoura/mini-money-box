@@ -7,7 +7,8 @@
     android:clickable="true"
     android:focusable="true"
     app:cardCornerRadius="8dp"
-    app:cardElevation="4dp">
+    app:cardElevation="4dp"
+    app:rippleColor="@color/aqua_ripple">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,18 +16,19 @@
 
         <TextView
             android:id="@+id/textViewProductName"
+            style="@style/TextAppearance.Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:textSize="18sp"
-            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Stocks and Shared" />
 
         <TextView
             android:id="@+id/textViewPlanValueTitle"
+            style="@style/TextAppearance.Regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -37,16 +39,17 @@
 
         <TextView
             android:id="@+id/textViewPlanValue"
+            style="@style/TextAppearance.Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/textViewPlanValueTitle"
             app:layout_constraintTop_toTopOf="@id/textViewPlanValueTitle"
             tools:text="£ 1,000.00" />
 
         <TextView
             android:id="@+id/textViewMoneyboxTitle"
+            style="@style/TextAppearance.Regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -59,10 +62,10 @@
 
         <TextView
             android:id="@+id/textViewMoneyboxValue"
+            style="@style/TextAppearance.Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/textViewMoneyboxTitle"
             app:layout_constraintTop_toTopOf="@id/textViewMoneyboxTitle"
             tools:text="£50.00" />

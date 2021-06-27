@@ -8,5 +8,6 @@
     <color name="text_button_primary">@color/white</color>
     <color name="button_background">#00c2b5</color>
     <color name="aqua_50">#7F00c2b5</color>
+    <color name="aqua_ripple">#3400C2B5</color>
 
 </resources>
