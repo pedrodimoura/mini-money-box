@@ -1,17 +1,13 @@
 package com.example.minimoneybox.features.login.presentation
 
-import android.util.Log
 import androidx.navigation.Navigation
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.launchActivity
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.work.Configuration
-import androidx.work.testing.SynchronousExecutor
-import androidx.work.testing.WorkManagerTestInitHelper
 import com.example.minimoneybox.R
 import com.example.minimoneybox.common.NetworkingTest
 import com.example.minimoneybox.common.di.NetworkHiltModule
-import com.example.minimoneybox.features.login.LoginActivity
+import com.example.minimoneybox.features.login.presentation.activity.LoginActivity
 import com.example.minimoneybox.features.login.data.datasource.remote.service.USERS_LOGIN_ENDPOINT
 import com.example.minimoneybox.features.login.robot.LoginRobot
 import dagger.hilt.android.testing.HiltAndroidTest

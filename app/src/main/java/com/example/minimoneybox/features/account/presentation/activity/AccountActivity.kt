@@ -1,6 +1,5 @@
-package com.example.minimoneybox.features.account.presentation
+package com.example.minimoneybox.features.account.presentation.activity
 
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.navArgs

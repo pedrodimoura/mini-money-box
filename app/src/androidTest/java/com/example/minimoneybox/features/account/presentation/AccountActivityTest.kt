@@ -8,6 +8,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.minimoneybox.common.NetworkingTest
 import com.example.minimoneybox.common.di.NetworkHiltModule
 import com.example.minimoneybox.features.account.data.datasource.remote.service.ACCOUNT_INFORMATION_ENDPOINT
+import com.example.minimoneybox.features.account.presentation.activity.AccountActivity
 import com.example.minimoneybox.features.account.robot.AccountResult
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules

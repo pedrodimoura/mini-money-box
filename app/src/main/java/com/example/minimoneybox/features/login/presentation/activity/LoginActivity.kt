@@ -1,4 +1,4 @@
-package com.example.minimoneybox.features.login
+package com.example.minimoneybox.features.login.presentation.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import com.example.minimoneybox.R
