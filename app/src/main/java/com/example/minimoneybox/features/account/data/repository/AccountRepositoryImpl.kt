@@ -1,5 +1,6 @@
 package com.example.minimoneybox.features.account.data.repository
 
+import com.example.minimoneybox.common.data.networking.exceptions.ifThrowParseError
 import com.example.minimoneybox.features.account.data.datasource.remote.AccountRemoteDatasource
 import com.example.minimoneybox.features.account.data.datasource.remote.model.AccountInformationResponse
 import com.example.minimoneybox.features.account.data.datasource.remote.model.AccountResponse
@@ -12,7 +13,9 @@ class AccountRepositoryImpl @Inject constructor(
     private val accountRemoteDatasource: AccountRemoteDatasource,
 ) : AccountRepository {
     override suspend fun fetchAccountInformation(): AccountInformation {
-        return accountRemoteDatasource.fetchAccountInformation().asDomain()
+        return runCatching {
+            accountRemoteDatasource.fetchAccountInformation().asDomain()
+        }.ifThrowParseError()
     }
 }
 

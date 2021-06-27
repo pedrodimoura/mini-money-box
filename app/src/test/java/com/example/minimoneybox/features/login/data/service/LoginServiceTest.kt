@@ -1,6 +1,6 @@
 package com.example.minimoneybox.features.login.data.service
 
-import com.example.minimoneybox.common.networking.HttpClient
+import com.example.minimoneybox.common.data.networking.HttpClient
 import com.example.minimoneybox.common.networking.RetrofitClientTest
 import com.example.minimoneybox.common.test.MockWebServerTest
 import com.example.minimoneybox.features.login.data.datasource.remote.model.AuthenticationRequest

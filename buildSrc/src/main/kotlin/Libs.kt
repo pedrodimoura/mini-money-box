@@ -33,6 +33,7 @@ object Libs {
     // Dagger Hilt
     const val hiltAndroid = "com.google.dagger:hilt-android:${Version.hilt}"
     const val hiltCompiler = "com.google.dagger:hilt-compiler:${Version.hilt}"
+    const val hiltWork = "androidx.hilt:hilt-work:1.0.0-alpha01"
 
     const val securityCrypto = "androidx.security:security-crypto:${Version.securityCrypto}"
 

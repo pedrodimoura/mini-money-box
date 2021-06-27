@@ -95,6 +95,7 @@ dependencies {
     // Dagger Hilt
     implementation(Libs.hiltAndroid)
     kapt(Libs.hiltCompiler)
+    implementation(Libs.hiltWork)
     androidTestImplementation(TestLibs.hiltAndroidTesting)
     kaptAndroidTest(TestLibs.hiltCompiler)
     testImplementation(TestLibs.hiltAndroidTesting)
@@ -124,6 +125,7 @@ dependencies {
     androidTestImplementation(TestLibs.okHttpIdlingResource)
     androidTestImplementation(TestLibs.mockkAndroid)
     androidTestImplementation(TestLibs.dexMaker)
+    androidTestImplementation(TestLibs.workManagerTesting)
 }
 
 

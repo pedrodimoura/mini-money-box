@@ -1,6 +1,6 @@
-package com.example.minimoneybox.common.networking.retrofit
+package com.example.minimoneybox.common.data.networking.retrofit
 
-import com.example.minimoneybox.common.networking.HttpClient
+import com.example.minimoneybox.common.data.networking.HttpClient
 import okhttp3.OkHttpClient
 import retrofit2.Converter
 import retrofit2.Retrofit

@@ -1,12 +1,12 @@
 package com.example.minimoneybox.features.login.data.repository
 
-import com.example.minimoneybox.common.networking.exceptions.localThrowableToDomain
-import com.example.minimoneybox.common.networking.exceptions.remoteThrowableToDomain
+import com.example.minimoneybox.common.data.networking.exceptions.localThrowableToDomain
+import com.example.minimoneybox.common.data.networking.exceptions.remoteThrowableToDomain
 import com.example.minimoneybox.features.login.data.datasource.local.LoginLocalDatasource
 import com.example.minimoneybox.features.login.data.datasource.remote.LoginRemoteDatasource
 import com.example.minimoneybox.features.login.data.datasource.remote.model.AuthenticationRequest
 import com.example.minimoneybox.features.login.domain.model.LoginParams
-import com.example.minimoneybox.features.login.domain.model.UserCredential
+import com.example.minimoneybox.common.domain.model.UserCredential
 import com.example.minimoneybox.features.login.domain.repository.LoginRepository
 import javax.inject.Inject
 
@@ -35,6 +35,8 @@ class LoginRepositoryImpl @Inject constructor(
         runCatching { loginLocalDatasource.save(userCredential) }
             .getOrElse { throwable -> throw throwable.localThrowableToDomain() }
     }
+
+    override fun logout() = loginLocalDatasource.logout()
 
     private fun LoginParams.mapToRemote() =
         AuthenticationRequest(this.email, this.password, this.name.orEmpty())

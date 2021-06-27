@@ -11,7 +11,7 @@ object Version {
     const val okHttp = "4.9.1"
     const val gson = "2.8.7"
     const val gsonRetrofitConverter = "2.9.0"
-    const val workManager = "2.5.0"
+    const val workManager = "2.6.0-beta01"
 
     const val junit = "4.13.2"
     const val extJunit = "1.1.2"

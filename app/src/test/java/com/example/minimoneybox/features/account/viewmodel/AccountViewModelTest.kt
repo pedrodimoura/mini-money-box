@@ -2,7 +2,7 @@ package com.example.minimoneybox.features.account.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.example.minimoneybox.common.networking.exceptions.DefaultNetworkError
+import com.example.minimoneybox.common.data.networking.exceptions.DefaultNetworkError
 import com.example.minimoneybox.features.account.domain.model.AccountInformation
 import com.example.minimoneybox.features.account.domain.usecase.FetchAccountInformationUseCase
 import com.example.minimoneybox.features.account.presentation.viewmodel.AccountAction
@@ -50,32 +50,35 @@ class AccountViewModelTest {
     }
 
     @Test
-    fun `SHOULD fetchAccountInformation emits Show Loading, Show Data and Hide Loading`() {
+    fun `SHOULD fetchAccountInformation emits Show Loading, Hide Content, Show Data, Show Content and Hide Loading`() {
         val mockReturn: AccountInformation = mockk()
         coEvery { fetchAccountInformationUseCase() } returns mockReturn
 
         accountViewModel.fetchAccountInformation()
 
         verifySequence {
-            statesObserver.onChanged(AccountState(isLoading = false))
+            statesObserver.onChanged(AccountState())
             statesObserver.onChanged(AccountState(isLoading = true))
+            statesObserver.onChanged(AccountState(isLoading = true, isContentVisible = false))
             actionsObserver.onChanged(AccountAction.ShowAccountInformationOnUI(mockReturn))
-            statesObserver.onChanged(AccountState(isLoading = false))
+            statesObserver.onChanged(AccountState(isLoading = true, isContentVisible = true))
+            statesObserver.onChanged(AccountState(isLoading = false, isContentVisible = true))
         }
     }
 
     @Test
-    fun `SHOULD fetchAccountInformation emits Show Loading, OpenErrorScreen and Hide Loading`() {
+    fun `SHOULD fetchAccountInformation emits Show Loading, Hide Content, OpenErrorScreen and Hide Loading`() {
         val expectedError = DefaultNetworkError(null)
         coEvery { fetchAccountInformationUseCase() } throws expectedError
 
         accountViewModel.fetchAccountInformation()
 
         verifySequence {
-            statesObserver.onChanged(AccountState(isLoading = false))
-            statesObserver.onChanged(AccountState(isLoading = true))
+            statesObserver.onChanged(AccountState())
+            statesObserver.onChanged(AccountState(isLoading = true, isContentVisible = false))
+            statesObserver.onChanged(AccountState(isLoading = true, isContentVisible = false))
             actionsObserver.onChanged(AccountAction.OpenErrorScreen(expectedError.message.orEmpty()))
-            statesObserver.onChanged(AccountState(isLoading = false))
+            statesObserver.onChanged(AccountState(isLoading = false, isContentVisible = false))
         }
     }
 

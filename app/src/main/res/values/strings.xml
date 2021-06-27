@@ -17,4 +17,11 @@
     <string name="accounts_feature_title">Accounts</string>
     <string name="error_feature_title">Generic Error Screen</string>
 
+    <!-- Account Activity -->
+    <string name="account_activity_default_greeting_text"><![CDATA[<b>Hello!</b>]]></string>
+    <string name="account_activity_greeting_text"><![CDATA[Hello, <br><b>%s!</b>]]></string>
+
+    <string name="text_view_plan_value">PlanValue:</string>
+    <string name="text_view_moneybox">Moneybox:</string>
+
 </resources>

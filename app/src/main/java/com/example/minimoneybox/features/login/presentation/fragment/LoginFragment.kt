@@ -62,6 +62,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         findNavController().navigate(
             LoginFragmentDirections.fromFragmentLoginToAccountsActivity(name)
         )
+        requireActivity().finish()
     }
 
     private fun navigateToErrorFragment() {

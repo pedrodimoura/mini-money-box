@@ -1,6 +1,6 @@
 package com.example.minimoneybox.features.account.domain
 
-import com.example.minimoneybox.common.networking.exceptions.DefaultNetworkError
+import com.example.minimoneybox.common.data.networking.exceptions.DefaultNetworkError
 import com.example.minimoneybox.common.test.BaseUnitTest
 import com.example.minimoneybox.features.account.domain.repository.AccountRepository
 import com.example.minimoneybox.features.account.domain.usecase.FetchAccountInformationUseCase

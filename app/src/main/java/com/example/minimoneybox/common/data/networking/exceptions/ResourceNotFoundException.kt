@@ -1,4 +1,4 @@
-package com.example.minimoneybox.common.networking.exceptions
+package com.example.minimoneybox.common.data.networking.exceptions
 
 class ResourceNotFoundException(
     cause: Throwable?

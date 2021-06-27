@@ -20,4 +20,5 @@ object TestLibs {
     const val navigation = "androidx.navigation:navigation-testing:${Version.navigation}"
     const val okHttpIdlingResource =
         "com.jakewharton.espresso:okhttp3-idling-resource:${Version.okHttpIdlingResource}"
+    const val workManagerTesting = "androidx.work:work-testing:${Version.workManager}"
 }

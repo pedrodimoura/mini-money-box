@@ -1,6 +1,6 @@
 package com.example.minimoneybox.features.login.di
 
-import com.example.minimoneybox.common.networking.HttpClient
+import com.example.minimoneybox.common.data.networking.HttpClient
 import com.example.minimoneybox.features.login.data.datasource.local.LoginLocalDatasource
 import com.example.minimoneybox.features.login.data.datasource.local.impl.LoginLocalDatasourceImpl
 import com.example.minimoneybox.features.login.data.datasource.remote.LoginRemoteDatasource

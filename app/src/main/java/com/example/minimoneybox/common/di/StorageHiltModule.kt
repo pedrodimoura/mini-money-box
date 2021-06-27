@@ -1,7 +1,7 @@
 package com.example.minimoneybox.common.di
 
-import com.example.minimoneybox.common.storage.Storage
-import com.example.minimoneybox.common.storage.preferences.PreferencesImpl
+import com.example.minimoneybox.common.data.storage.Storage
+import com.example.minimoneybox.common.data.storage.preferences.PreferencesImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

@@ -29,8 +29,8 @@
 
     <activity
         android:id="@+id/activityAccounts"
-        android:name="com.example.minimoneybox.features.account.presentation.AccountsActivity"
-        tools:layout="@layout/activity_accounts">
+        android:name="com.example.minimoneybox.features.account.presentation.AccountActivity"
+        tools:layout="@layout/activity_account">
         <argument
             android:name="name"
             app:argType="string"

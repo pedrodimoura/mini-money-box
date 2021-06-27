@@ -1,12 +1,12 @@
 package com.example.minimoneybox.features.login.data.datasource.local
 
-import com.example.minimoneybox.common.storage.Storage
+import com.example.minimoneybox.common.domain.SessionRepository
+import com.example.minimoneybox.common.domain.model.UserCredential
 import com.example.minimoneybox.features.login.data.datasource.local.impl.LoginLocalDatasourceImpl
-import com.example.minimoneybox.features.login.domain.model.UserCredential
-import com.google.gson.Gson
 import io.mockk.clearAllMocks
 import io.mockk.every
 import io.mockk.mockk
+import java.io.IOException
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -14,11 +14,10 @@ import org.junit.Test
 
 class LoginLocalDatasourceTest {
 
-    private val preferences: Storage.Preferences by lazy { mockk() }
-    private val gson: Gson by lazy { mockk() }
+    private val sessionRepository: SessionRepository by lazy { mockk() }
 
     private val loginLocalDatasource: LoginLocalDatasource by lazy {
-        LoginLocalDatasourceImpl(preferences, gson)
+        LoginLocalDatasourceImpl(sessionRepository)
     }
 
     @After
@@ -27,7 +26,7 @@ class LoginLocalDatasourceTest {
     }
 
     @Test
-    fun `SHOULD get be successful when Preferences return a valid UserCredential json string`() {
+    fun `SHOULD get be successful when SessionRepository return a valid UserCredential`() {
 
         val expected = UserCredential(
             name = "",
@@ -36,8 +35,7 @@ class LoginLocalDatasourceTest {
             lastActivityTimestamp = 0L
         )
 
-        every { preferences.getString(any(), any()) } returns ""
-        every { gson.fromJson(any() as String, UserCredential::class.java) } returns expected
+        every { sessionRepository.get() } returns expected
 
         runBlocking {
             val result = loginLocalDatasource.get()
@@ -45,9 +43,9 @@ class LoginLocalDatasourceTest {
         }
     }
 
-    @Test(expected = IllegalStateException::class)
-    fun `SHOULD get throw an exception when Preferences return null or empty json string`() {
-        every { preferences.getString(any(), any()) } returns null
+    @Test(expected = IOException::class)
+    fun `SHOULD get throw an exception when SessionRepository return an invalid UserCredential`() {
+        every { sessionRepository.get() } throws IOException()
 
         runBlocking { loginLocalDatasource.get() }
     }

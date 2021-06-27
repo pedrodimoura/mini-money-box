@@ -1,6 +1,6 @@
 package com.example.minimoneybox.features.login.data.datasource.local
 
-import com.example.minimoneybox.features.login.domain.model.UserCredential
+import com.example.minimoneybox.common.domain.model.UserCredential
 
 interface LoginLocalDatasource {
 
@@ -9,5 +9,7 @@ interface LoginLocalDatasource {
     suspend fun get(): UserCredential
 
     suspend fun isSessionActive(): Boolean
+
+    fun logout()
 
 }

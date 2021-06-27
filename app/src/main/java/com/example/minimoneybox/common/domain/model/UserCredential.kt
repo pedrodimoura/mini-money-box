@@ -1,4 +1,4 @@
-package com.example.minimoneybox.features.login.domain.model
+package com.example.minimoneybox.common.domain.model
 
 data class UserCredential(
     val name: String,

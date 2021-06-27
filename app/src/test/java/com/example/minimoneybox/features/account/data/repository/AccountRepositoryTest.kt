@@ -1,6 +1,6 @@
 package com.example.minimoneybox.features.account.data.repository
 
-import com.example.minimoneybox.common.networking.exceptions.DefaultNetworkError
+import com.example.minimoneybox.common.data.networking.exceptions.DefaultNetworkError
 import com.example.minimoneybox.common.test.BaseUnitTest
 import com.example.minimoneybox.features.account.data.datasource.remote.AccountRemoteDatasource
 import com.example.minimoneybox.features.account.data.datasource.remote.model.AccountInformationResponse

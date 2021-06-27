@@ -1,4 +1,4 @@
-package com.example.minimoneybox.common.networking.exceptions
+package com.example.minimoneybox.common.data.networking.exceptions
 
 import java.net.HttpURLConnection
 import retrofit2.HttpException

@@ -9,4 +9,6 @@ sealed class AccountAction : UIAction {
     ) : AccountAction()
 
     data class OpenErrorScreen(val message: String) : AccountAction()
+
+    object LogoutUser : AccountAction()
 }

@@ -1,9 +1,13 @@
 package com.example.minimoneybox.features.login.presentation
 
+import android.util.Log
 import androidx.navigation.Navigation
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.launchActivity
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.work.Configuration
+import androidx.work.testing.SynchronousExecutor
+import androidx.work.testing.WorkManagerTestInitHelper
 import com.example.minimoneybox.R
 import com.example.minimoneybox.common.NetworkingTest
 import com.example.minimoneybox.common.di.NetworkHiltModule
@@ -16,6 +20,7 @@ import java.net.HttpURLConnection
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.RecordedRequest
+import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -55,8 +60,13 @@ class LoginActivityTest : NetworkingTest() {
         }
     }
 
+    @After
+    fun tearDown() {
+        loginActivityScenario.close()
+    }
+
     @Test
-    fun networkUiTesting() {
+    fun shouldLoginSucceedAndNavigateToAccountScreen() {
         LoginRobot()
             .typeEmail("email@email.com")
             .typePassword("1234")

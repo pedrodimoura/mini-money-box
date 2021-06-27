@@ -1,6 +1,6 @@
 package com.example.minimoneybox.features.account.di
 
-import com.example.minimoneybox.common.networking.HttpClient
+import com.example.minimoneybox.common.data.networking.HttpClient
 import com.example.minimoneybox.features.account.data.datasource.remote.AccountRemoteDatasource
 import com.example.minimoneybox.features.account.data.datasource.remote.impl.AccountRemoteDatasourceImpl
 import com.example.minimoneybox.features.account.data.datasource.remote.service.AccountService

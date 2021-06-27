@@ -1,6 +1,6 @@
 package com.example.minimoneybox.features.login.domain.usecases
 
-import com.example.minimoneybox.common.networking.exceptions.DefaultNetworkError
+import com.example.minimoneybox.common.data.networking.exceptions.DefaultNetworkError
 import com.example.minimoneybox.features.login.domain.model.LoginParams
 import com.example.minimoneybox.features.login.domain.repository.LoginRepository
 import com.example.minimoneybox.features.login.domain.usecase.LoginUseCase

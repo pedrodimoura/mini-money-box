@@ -1,7 +1,7 @@
 package com.example.minimoneybox.features.login.data.repository
 
-import com.example.minimoneybox.common.networking.exceptions.ResourceNotFoundException
-import com.example.minimoneybox.common.networking.exceptions.TypeConversionException
+import com.example.minimoneybox.common.data.networking.exceptions.ResourceNotFoundException
+import com.example.minimoneybox.common.data.networking.exceptions.TypeConversionException
 import com.example.minimoneybox.features.login.data.datasource.local.LoginLocalDatasource
 import com.example.minimoneybox.features.login.data.datasource.remote.LoginRemoteDatasource
 import com.example.minimoneybox.features.login.data.datasource.remote.model.AuthenticationResponse

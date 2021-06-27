@@ -2,10 +2,9 @@ package com.example.minimoneybox.common.di
 
 import android.util.Log
 import com.example.minimoneybox.BuildConfig
-import com.example.minimoneybox.common.networking.HttpClient
-import com.example.minimoneybox.common.networking.retrofit.RetrofitClientImpl
-import com.example.minimoneybox.common.storage.Storage
-import com.example.minimoneybox.features.login.domain.model.UserCredential
+import com.example.minimoneybox.common.data.networking.HttpClient
+import com.example.minimoneybox.common.data.networking.retrofit.RetrofitClientImpl
+import com.example.minimoneybox.common.domain.SessionRepository
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -28,7 +27,6 @@ annotation class LoggingInterceptor
 
 const val OK_HTTP_LOGGING_TAG = "OK_HTTP_LOGGING"
 
-
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkHiltModule {
@@ -38,14 +36,18 @@ object NetworkHiltModule {
     private const val API_VERSION_KEY = "apiVersion"
     private const val CONTENT_TYPE_KEY = "Content-Type"
     private const val CONTENT_TYPE = "application/json"
-    private const val AUTHORIZATION_KEY = "BearerToken"
-
-    const val USER_CREDENTIAL = "user-credential"
+    private const val AUTHORIZATION_KEY = "Authorization"
+    private const val BEARER = "Bearer"
 
     @ApiKeyInterceptor
     @Provides
-    fun providesApiKeyInterceptor(): Interceptor {
+    fun providesApiKeyInterceptor(
+        sessionRepository: SessionRepository,
+    ): Interceptor {
         return Interceptor { chain ->
+
+            sessionRepository.refresh()
+
             val request = chain.request()
 
             val newRequest = request.newBuilder()
@@ -61,20 +63,15 @@ object NetworkHiltModule {
 
     @Provides
     fun providesAuthenticator(
-        storage: Storage.Preferences,
-        gson: Gson,
+        sessionRepository: SessionRepository,
     ): Authenticator = Authenticator { _, response ->
         if (response.request.header(AUTHORIZATION_KEY) != null) {
             null
         } else {
-            val key = gson.fromJson(
-                storage.getString(USER_CREDENTIAL),
-                UserCredential::class.java
-            )
-
-            if (key != null)
-                response.request.newBuilder().addHeader(AUTHORIZATION_KEY, key.token).build()
-            else null
+            val userCredential = sessionRepository.get()
+            response.request.newBuilder()
+                .addHeader(AUTHORIZATION_KEY, "$BEARER ${userCredential.token}")
+                .build()
         }
     }
 

@@ -2,7 +2,7 @@ package com.example.minimoneybox.features.login.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.example.minimoneybox.common.networking.exceptions.DefaultNetworkError
+import com.example.minimoneybox.common.data.networking.exceptions.DefaultNetworkError
 import com.example.minimoneybox.features.login.domain.model.LoginParams
 import com.example.minimoneybox.features.login.domain.usecase.LoginUseCase
 import com.example.minimoneybox.features.login.presentation.viewmodel.LoginAction

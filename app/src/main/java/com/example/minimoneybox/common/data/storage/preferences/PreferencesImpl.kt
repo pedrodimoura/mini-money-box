@@ -1,10 +1,10 @@
-package com.example.minimoneybox.common.storage.preferences
+package com.example.minimoneybox.common.data.storage.preferences
 
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
-import com.example.minimoneybox.common.storage.Storage
+import com.example.minimoneybox.common.data.storage.Storage
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
@@ -38,4 +38,15 @@ class PreferencesImpl @Inject constructor(
 
     override fun getString(key: String, defaultValue: String?): String? =
         encryptedSharedPreferences.getString(key, defaultValue)
+
+    override fun saveBoolean(key: String, value: Boolean) =
+        encryptedSharedPreferences.edit().putBoolean(key, value).apply()
+
+    override fun getBoolean(key: String, defaultValue: Boolean): Boolean =
+        encryptedSharedPreferences.getBoolean(key, defaultValue)
+
+    override fun invalidate(key: String) =
+        encryptedSharedPreferences.edit().remove(key).apply()
+
+    override fun invalidateAll() = encryptedSharedPreferences.edit().clear().apply()
 }

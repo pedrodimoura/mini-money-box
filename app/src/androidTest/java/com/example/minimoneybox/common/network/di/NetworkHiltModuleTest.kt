@@ -5,8 +5,8 @@ import com.example.minimoneybox.BuildConfig
 import com.example.minimoneybox.common.di.ApiKeyInterceptor
 import com.example.minimoneybox.common.di.LoggingInterceptor
 import com.example.minimoneybox.common.di.OK_HTTP_LOGGING_TAG
-import com.example.minimoneybox.common.networking.HttpClient
-import com.example.minimoneybox.common.networking.retrofit.RetrofitClientImpl
+import com.example.minimoneybox.common.data.networking.HttpClient
+import com.example.minimoneybox.common.data.networking.retrofit.RetrofitClientImpl
 import com.example.minimoneybox.common.testUrl
 import com.google.gson.Gson
 import dagger.Module
