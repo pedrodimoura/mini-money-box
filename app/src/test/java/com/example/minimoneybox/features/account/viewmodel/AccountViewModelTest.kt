@@ -60,8 +60,8 @@ class AccountViewModelTest {
             statesObserver.onChanged(AccountState())
             statesObserver.onChanged(AccountState(isLoading = true))
             statesObserver.onChanged(AccountState(isLoading = true, isContentVisible = false))
-            actionsObserver.onChanged(AccountAction.ShowAccountInformationOnUI(mockReturn))
             statesObserver.onChanged(AccountState(isLoading = true, isContentVisible = true))
+            actionsObserver.onChanged(AccountAction.ShowAccountInformationOnUI(mockReturn))
             statesObserver.onChanged(AccountState(isLoading = false, isContentVisible = true))
         }
     }

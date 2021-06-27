@@ -45,7 +45,7 @@ class SessionRepositoryImpl @Inject constructor(
     override fun refresh() {
         if (isRefreshEnabled()) {
             val workRequest = OneTimeWorkRequestBuilder<SessionLogoutWorker>()
-                .setInitialDelay(10, TimeUnit.SECONDS)
+                .setInitialDelay(SESSION_EXPIRATION, TimeUnit.MINUTES)
                 .addTag(SESSION_LOGOUT_WORKER_NAME)
                 .build()
             WorkManager.getInstance(context).enqueueUniqueWork(

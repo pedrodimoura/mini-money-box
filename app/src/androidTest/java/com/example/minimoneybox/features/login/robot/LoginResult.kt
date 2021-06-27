@@ -9,7 +9,7 @@ import com.example.minimoneybox.R
 class LoginResult {
 
     fun accountScreenIsShowing(): LoginResult {
-        onView(withId(R.id.accountsTextView)).check(matches(isDisplayed()))
+        onView(withId(R.id.accountScreenRoot)).check(matches(isDisplayed()))
         return this
     }
 }

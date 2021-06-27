@@ -57,6 +57,24 @@ class AccountActivityTest : NetworkingTest() {
     }
 
     @Test
+    fun shouldShowGreetingsMessageWithName() {
+        activityScenario = launchActivity(getDefaultIntent(DEFAULT_NAME_ARGUMENT))
+
+        AccountResult()
+            .checkGreetingsWithNameIsDisplayed(DEFAULT_NAME_ARGUMENT)
+            .checkAccountListIsVisible()
+    }
+
+    @Test
+    fun shouldShowGreetingsMessageWithoutName() {
+        activityScenario = launchActivity(getDefaultIntent(""))
+
+        AccountResult()
+            .checkGreetingsWithoutNameIsDisplayed()
+            .checkAccountListIsVisible()
+    }
+
+    @Test
     fun shouldShowAccountsList() {
         activityScenario = launchActivity(getDefaultIntent())
 
