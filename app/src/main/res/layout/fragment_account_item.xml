@@ -7,7 +7,6 @@
     android:clickable="true"
     android:focusable="true"
     app:cardCornerRadius="8dp"
-    app:cardElevation="4dp"
     app:rippleColor="@color/aqua_ripple">
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -5,6 +5,7 @@
     <dimen name="text_style_medium">15sp</dimen>
     <dimen name="line_height_button_primary">20sp</dimen>
     <dimen name="margin_default">16dp</dimen>
+    <dimen name="margin_32">32dp</dimen>
     <dimen name="margin_default_half">8dp</dimen>
 
 </resources>

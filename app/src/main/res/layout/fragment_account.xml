@@ -23,6 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="bottom|center_horizontal"
+            android:textColor="@color/white"
             android:textSize="18sp"
             tools:text="Hello," />
 
@@ -32,7 +33,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="bottom|center_horizontal"
-            android:paddingBottom="@dimen/margin_default"
+            android:paddingBottom="@dimen/margin_32"
+            android:textColor="@color/white"
             android:textSize="28sp"
             android:textStyle="bold"
             tools:text="Pedro!" />
@@ -44,14 +46,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:lottie_scale="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/greetingsLinearLayout"
         app:lottie_autoPlay="false"
         app:lottie_fileName="@string/lottie_loading"
-        app:lottie_loop="true" />
+        app:lottie_loop="true"
+        app:lottie_scale="1" />
 
     <TextView
         android:id="@+id/loadingMessageTextView"

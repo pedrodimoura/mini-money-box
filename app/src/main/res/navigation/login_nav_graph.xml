@@ -11,7 +11,9 @@
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/fromFragmentLoginToAccountsActivity"
-            app:destination="@id/activityAccounts">
+            app:destination="@id/activityAccounts"
+            app:popUpTo="@navigation/login_nav_graph"
+            app:popUpToInclusive="true">
             <argument
                 android:name="name"
                 app:argType="string"

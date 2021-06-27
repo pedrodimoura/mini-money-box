@@ -13,5 +13,16 @@
             android:name="name"
             app:argType="string"
             app:nullable="true" />
+        <action
+            android:id="@+id/fromFragmentAccountToLoginActivity"
+            app:destination="@id/activityLogin"
+            app:popUpTo="@navigation/login_nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
+
+    <activity
+        android:id="@+id/activityLogin"
+        android:name="com.example.minimoneybox.features.login.presentation.activity.LoginActivity"
+        tools:layout="@layout/activity_login" />
+
 </navigation>

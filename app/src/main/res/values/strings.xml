@@ -11,6 +11,11 @@
     <string name="password_error">Please enter a correct password</string>
     <string name="full_name_error">Please enter your full name</string>
     <string name="input_valid">Input is valid!</string>
+
+    <string name="session_expired_title">Session Expired</string>
+    <string name="session_expired_message">You have been out for a long time. Log in again</string>
+    <string name="session_expired_action_text">Back to Login</string>
+
     <!--    Lottie files-->
     <string name="lottie_owl_coin_shower">owl_coin_shower.json</string>
     <string name="lottie_loading">coin_loading.json</string>

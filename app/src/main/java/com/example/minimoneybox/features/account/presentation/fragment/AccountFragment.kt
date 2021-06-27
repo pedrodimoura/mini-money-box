@@ -12,6 +12,7 @@ import com.example.minimoneybox.R
 import com.example.minimoneybox.common.presentation.binding.viewBinding
 import com.example.minimoneybox.common.presentation.fragment.onAction
 import com.example.minimoneybox.common.presentation.fragment.onStateChanged
+import com.example.minimoneybox.common.presentation.fragment.showSessionExpiredDialog
 import com.example.minimoneybox.databinding.FragmentAccountBinding
 import com.example.minimoneybox.features.account.domain.model.AccountInformation
 import com.example.minimoneybox.features.account.presentation.adapter.AccountItemDecoration
@@ -56,10 +57,7 @@ class AccountFragment : Fragment(R.layout.fragment_account) {
             when (action) {
                 is AccountAction.ShowAccountInformationOnUI -> showAccountInformationOnUI(action.accountInformation)
                 is AccountAction.OpenErrorScreen -> Log.i(TAG, "Error: ${action.message}")
-                is AccountAction.LogoutUser -> {
-                    requireActivity().finish()
-                    // TODO: Show Logout Dialog!!
-                }
+                is AccountAction.LogoutUser -> showSessionExpiredDialog()
             }
         }
     }

@@ -34,7 +34,8 @@
             android:hint="@string/prompt_email"
             android:inputType="textEmailAddress"
             android:maxLines="1"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:text="jaeren+androidtest@moneyboxapp.com" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -57,7 +58,8 @@
             android:imeActionLabel="@string/action_sign_in_short"
             android:inputType="textPassword"
             android:maxLines="1"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:text="P455word12" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,8 +80,10 @@
             android:layout_height="wrap_content"
             android:hint="@string/prompt_full_name"
             android:inputType="textPersonName"
+            android:maxLength="12"
             android:maxLines="1"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:text="Pedro" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
