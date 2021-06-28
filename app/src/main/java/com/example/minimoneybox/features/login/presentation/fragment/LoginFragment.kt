@@ -13,8 +13,6 @@ import com.example.minimoneybox.features.login.presentation.viewmodel.LoginActio
 import com.example.minimoneybox.features.login.presentation.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-private const val TAG = "LoginFragment"
-
 @AndroidEntryPoint
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
@@ -41,8 +39,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun observeStates() {
-        viewModel.states.observe(viewLifecycleOwner) {
-            showLoading(it.isLoading)
+        viewModel.states.observe(viewLifecycleOwner) { state ->
+            showLoading(state.isLoading)
+            showEmailErrorMessage(state.isEmailInvalid)
+            showPasswordErrorMessage(state.isPasswordEmpty)
         }
     }
 
@@ -72,5 +72,17 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             show -> viewBinding.animation.playAnimation()
             else -> viewBinding.animation.cancelAnimation()
         }
+    }
+
+    private fun showEmailErrorMessage(show: Boolean) {
+        if (show)
+            viewBinding.etEmail.error = getString(R.string.email_address_error)
+        else viewBinding.etEmail.error = null
+    }
+
+    private fun showPasswordErrorMessage(show: Boolean) {
+        if (show)
+            viewBinding.etPassword.error = getString(R.string.error_incorrect_password)
+        else viewBinding.etPassword.error = null
     }
 }
