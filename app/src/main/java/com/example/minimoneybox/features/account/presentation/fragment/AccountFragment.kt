@@ -99,7 +99,7 @@ class AccountFragment : Fragment(R.layout.fragment_account) {
     }
 
     private fun showAccountInformationOnUI(accountInformation: AccountInformation) {
-        accountRecyclerViewAdapter.submitList(accountInformation.accounts)
+        accountRecyclerViewAdapter.submitList(accountInformation.products)
     }
 
 }

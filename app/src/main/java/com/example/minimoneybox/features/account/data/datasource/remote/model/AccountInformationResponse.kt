@@ -12,5 +12,7 @@ data class AccountInformationResponse(
     @SerializedName("TotalEarningsAsPercentage")
     val totalEarningsAsPercentage: Double,
     @SerializedName("Accounts")
-    val accounts: List<AccountResponse>
+    val accounts: List<AccountResponse>,
+    @SerializedName("ProductResponses")
+    val products: List<ProductResponse>,
 )

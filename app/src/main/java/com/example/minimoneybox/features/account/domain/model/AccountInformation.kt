@@ -5,5 +5,6 @@ data class AccountInformation(
     val totalEarnings: Float,
     val totalContributionsNet: Float,
     val totalEarningsAsPercentage: Double,
-    val accounts: List<Account>
+    val accounts: List<Account>,
+    val products: List<Product>,
 )
