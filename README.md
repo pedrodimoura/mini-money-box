@@ -6,14 +6,17 @@ The app is only modularized in directories inside the `app` module. Depending on
 
 There are three main directories on the project: `common`, `features` and `ui`
 
-`common` is the directory that I have used to put some Interfaces, Abstract Classes, Classes, Extensions, etc, that should be shared with all features, e.g. `HttpClient.RetrofitClient`, `Storage.Preferences`, `Storage.Database`, `SessionRepositoryImpl` etc.
+`common`: is the directory that I have used to put some Interfaces, Abstract Classes, Classes, Extensions, etc, that should be shared with all features, e.g. `HttpClient.RetrofitClient`, `Storage.Preferences`, `Storage.Database`, `SessionRepositoryImpl` etc.
 
 `features`: inside this directory you can find the main features: `login` and `account`.
 
 - `login`: this module has all resources, repositories, datasources, etc, related to the login feature.
 - `account`: this module has all resources, repositories, datasources, etc, related to the account feature. e.g. products and account list, quick add, etc.
 
-Inside each one I have followed this directory tree:
+
+`ui`: This is basically a module for Custom View implementation, View extensions, etc.
+
+Inside each one, except ui, I have followed this directory tree:
 
     features/login
     ├── data
