@@ -19,19 +19,6 @@
                 app:argType="string"
                 app:nullable="true" />
         </action>
-        <action
-            android:id="@+id/fromFragmentLoginToErrorFragment"
-            app:destination="@id/fragmentError" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/fragmentError"
-        android:name="com.example.minimoneybox.common.presentation.fragment.ErrorFragment"
-        tools:layout="@layout/fragment_error">
-        <argument
-            android:name="message"
-            app:argType="string"
-            app:nullable="false" />
     </fragment>
 
     <activity

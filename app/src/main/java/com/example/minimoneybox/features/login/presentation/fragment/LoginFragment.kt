@@ -7,10 +7,14 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.minimoneybox.R
 import com.example.minimoneybox.common.presentation.binding.viewBinding
+import com.example.minimoneybox.common.presentation.fragment.onAction
+import com.example.minimoneybox.common.presentation.fragment.onStateChanged
 import com.example.minimoneybox.databinding.FragmentLoginBinding
 import com.example.minimoneybox.features.login.domain.model.LoginParams
 import com.example.minimoneybox.features.login.presentation.viewmodel.LoginAction
 import com.example.minimoneybox.features.login.presentation.viewmodel.LoginViewModel
+import com.example.minimoneybox.ui.ErrorBottomSheetArgs
+import com.example.minimoneybox.ui.errorBottomSheet
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -39,7 +43,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun observeStates() {
-        viewModel.states.observe(viewLifecycleOwner) { state ->
+        onStateChanged(viewModel) { state ->
             showLoading(state.isLoading)
             showEmailErrorMessage(state.isEmailInvalid)
             showPasswordErrorMessage(state.isPasswordEmpty)
@@ -47,7 +51,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun observeActions() {
-        viewModel.actions.observe(viewLifecycleOwner) { action ->
+        onAction(viewModel) { action ->
             when (action) {
                 is LoginAction.OpenAccountsScreen -> navigateToAccountsActivity()
                 is LoginAction.OpenErrorScreen -> navigateToErrorFragment(action.message)
@@ -64,8 +68,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun navigateToErrorFragment(message: String) {
-        findNavController().navigate(
-            LoginFragmentDirections.fromFragmentLoginToErrorFragment(message)
+        errorBottomSheet(ErrorBottomSheetArgs(message)).show(
+            childFragmentManager,
+            this::class.java.simpleName
         )
     }
 

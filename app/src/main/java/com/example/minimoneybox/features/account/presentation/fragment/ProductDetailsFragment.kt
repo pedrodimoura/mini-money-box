@@ -16,6 +16,8 @@ import com.example.minimoneybox.common.presentation.fragment.showSessionExpiredD
 import com.example.minimoneybox.databinding.FragmentProductDetailsBinding
 import com.example.minimoneybox.features.account.presentation.viewmodel.ProductDetailsViewModel
 import com.example.minimoneybox.features.account.presentation.viewmodel.action.ProductDetailsAction
+import com.example.minimoneybox.ui.ErrorBottomSheetArgs
+import com.example.minimoneybox.ui.errorBottomSheet
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.NumberFormat
 import java.util.*
@@ -134,8 +136,7 @@ class ProductDetailsFragment : Fragment(R.layout.fragment_product_details) {
     }
 
     private fun openErrorScreen(message: String) {
-        findNavController().navigate(
-            ProductDetailsFragmentDirections.fromFragmentProductDetailsToFragmentError(message)
-        )
+        errorBottomSheet(ErrorBottomSheetArgs(message))
+            .show(childFragmentManager, this::class.java.simpleName)
     }
 }

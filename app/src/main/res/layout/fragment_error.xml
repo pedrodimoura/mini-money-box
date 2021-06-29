@@ -5,6 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/backImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginTop="@dimen/margin_default"
+        android:background="?selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_close_aqua"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/failureAnimation"
         android:layout_width="wrap_content"
@@ -15,8 +28,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
         app:lottie_fileName="@string/lottie_failure"
-        app:lottie_loop="true"
-        app:lottie_scale="1"/>
+        app:lottie_loop="false"
+        app:lottie_scale="1" />
 
     <TextView
         android:id="@+id/errorTitleTextView"
@@ -25,7 +38,6 @@
         android:layout_height="wrap_content"
         android:text="@string/error_feature_title"
         android:textSize="@dimen/textSize_18"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/failureAnimation" />

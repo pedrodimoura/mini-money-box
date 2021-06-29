@@ -21,6 +21,8 @@ import com.example.minimoneybox.features.account.presentation.adapter.AccountRec
 import com.example.minimoneybox.features.account.presentation.model.ProductView
 import com.example.minimoneybox.features.account.presentation.viewmodel.AccountViewModel
 import com.example.minimoneybox.features.account.presentation.viewmodel.action.AccountAction
+import com.example.minimoneybox.ui.ErrorBottomSheetArgs
+import com.example.minimoneybox.ui.errorBottomSheet
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.NumberFormat
 import java.util.*
@@ -58,9 +60,9 @@ class AccountFragment : Fragment(R.layout.fragment_account) {
         onAction(viewModel) { action ->
             when (action) {
                 is AccountAction.ShowAccountInformationOnUI -> showAccountInformationOnUI(action.accountInformation)
-                is AccountAction.OpenErrorScreen -> findNavController().navigate(
-                    AccountFragmentDirections.fromFragmentAccountToFragmentError(action.message)
-                )
+                is AccountAction.OpenErrorScreen ->
+                    errorBottomSheet(ErrorBottomSheetArgs(action.message))
+                        .show(childFragmentManager, this::class.java.simpleName)
                 is AccountAction.LogoutUser -> showSessionExpiredDialog()
             }
         }
@@ -122,5 +124,4 @@ class AccountFragment : Fragment(R.layout.fragment_account) {
             AccountFragmentDirections.fromFragmentAccountToFragmentProductDetails(productView)
         )
     }
-
 }
