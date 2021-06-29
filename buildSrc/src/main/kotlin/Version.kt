@@ -31,5 +31,6 @@ object Version {
     const val coreTesting = "2.1.0"
     const val coreKtxTest = "1.3.0"
     const val okHttpIdlingResource = "1.0.0"
+    const val multiDex = "2.0.1"
 
 }

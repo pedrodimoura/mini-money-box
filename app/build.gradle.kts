@@ -71,7 +71,7 @@ android {
 
 dependencies {
     implementation(Libs.kotlinStdLib)
-    implementation("androidx.multidex:multidex:2.0.1")
+    implementation(Libs.multiDex)
 
     implementation(Libs.coreKtx)
     implementation(Libs.appCompat)
