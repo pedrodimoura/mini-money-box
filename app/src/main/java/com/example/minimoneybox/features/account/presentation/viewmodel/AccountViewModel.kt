@@ -4,6 +4,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.minimoneybox.common.data.networking.exceptions.SessionExpiredException
 import com.example.minimoneybox.common.presentation.viewmodel.StateViewModel
 import com.example.minimoneybox.features.account.domain.usecase.FetchAccountInformationUseCase
+import com.example.minimoneybox.features.account.presentation.viewmodel.action.AccountAction
+import com.example.minimoneybox.features.account.presentation.viewmodel.state.AccountState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.launch
@@ -17,7 +19,6 @@ class AccountViewModel @Inject constructor(
         viewModelScope.launch {
             setState { currentState -> currentState.showLoading() }
             setState { currentState -> currentState.hideContent() }
-
             runCatching {
                 fetchAccountInformationUseCase()
             }.onSuccess {
@@ -31,7 +32,6 @@ class AccountViewModel @Inject constructor(
                     }
                 }
             }
-
             setState { currentState -> currentState.hideLoading() }
         }
     }

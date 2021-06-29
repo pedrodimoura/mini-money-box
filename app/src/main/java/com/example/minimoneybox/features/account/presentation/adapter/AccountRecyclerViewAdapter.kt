@@ -23,7 +23,7 @@ private val diffUtil = object : DiffUtil.ItemCallback<Product>() {
         oldItem == newItem
 }
 
-class AccountRecyclerViewAdapter :
+class AccountRecyclerViewAdapter(private val onProductSelected: (Product) -> Unit) :
     ListAdapter<Product, AccountRecyclerViewAdapter.AccountRecyclerViewHolder>(diffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AccountRecyclerViewHolder {
@@ -44,6 +44,7 @@ class AccountRecyclerViewAdapter :
                 NumberFormat.getCurrencyInstance(Locale.UK).format(product.planValue)
             viewBinding.textViewMoneyboxValue.text =
                 NumberFormat.getCurrencyInstance(Locale.UK).format(product.moneybox)
+            viewBinding.root.setOnClickListener { onProductSelected.invoke(product) }
         }
     }
 }

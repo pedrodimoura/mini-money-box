@@ -4,10 +4,14 @@ import com.example.minimoneybox.common.data.networking.exceptions.ifThrowParseEr
 import com.example.minimoneybox.features.account.data.datasource.remote.AccountRemoteDatasource
 import com.example.minimoneybox.features.account.data.datasource.remote.model.AccountInformationResponse
 import com.example.minimoneybox.features.account.data.datasource.remote.model.AccountResponse
+import com.example.minimoneybox.features.account.data.datasource.remote.model.OneOffPaymentsRequest
+import com.example.minimoneybox.features.account.data.datasource.remote.model.OneOffPaymentsResponse
 import com.example.minimoneybox.features.account.data.datasource.remote.model.ProductResponse
 import com.example.minimoneybox.features.account.domain.model.Account
 import com.example.minimoneybox.features.account.domain.model.AccountInformation
 import com.example.minimoneybox.features.account.domain.model.Product
+import com.example.minimoneybox.features.account.domain.model.QuickAddParams
+import com.example.minimoneybox.features.account.domain.model.QuickAddResult
 import com.example.minimoneybox.features.account.domain.repository.AccountRepository
 import javax.inject.Inject
 
@@ -17,6 +21,12 @@ class AccountRepositoryImpl @Inject constructor(
     override suspend fun fetchAccountInformation(): AccountInformation {
         return runCatching {
             accountRemoteDatasource.fetchAccountInformation().asDomain()
+        }.ifThrowParseError()
+    }
+
+    override suspend fun quickAdd(quickAddParams: QuickAddParams): QuickAddResult {
+        return runCatching {
+            accountRemoteDatasource.oneOffPayments(quickAddParams.asRemote()).asDomain()
         }.ifThrowParseError()
     }
 }
@@ -52,3 +62,9 @@ internal fun ProductResponse.ProductDetailResponse.asDomain() =
         this.category,
         this.friendlyName,
     )
+
+internal fun QuickAddParams.asRemote() = OneOffPaymentsRequest(
+    this.amount, this.productId
+)
+
+internal fun OneOffPaymentsResponse.asDomain() = QuickAddResult(this.moneybox)

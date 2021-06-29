@@ -18,6 +18,35 @@
             app:destination="@id/activityLogin"
             app:popUpTo="@navigation/login_nav_graph"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/fromFragmentAccountToFragmentProductDetails"
+            app:destination="@id/fragmentProductDetails" />
+        <action
+            android:id="@+id/fromFragmentAccountToFragmentError"
+            app:destination="@id/fragmentError" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentProductDetails"
+        android:name="com.example.minimoneybox.features.account.presentation.fragment.ProductDetailsFragment"
+        tools:layout="@layout/fragment_product_details">
+        <argument
+            android:name="product"
+            app:argType="com.example.minimoneybox.features.account.presentation.model.ProductView"
+            app:nullable="false" />
+        <action
+            android:id="@+id/fromFragmentProductDetailsToFragmentError"
+            app:destination="@id/fragmentError" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentError"
+        android:name="com.example.minimoneybox.common.presentation.fragment.ErrorFragment"
+        tools:layout="@layout/fragment_error">
+        <argument
+            android:name="message"
+            app:argType="string"
+            app:nullable="false" />
     </fragment>
 
     <activity

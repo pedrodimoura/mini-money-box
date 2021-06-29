@@ -27,7 +27,12 @@
     <fragment
         android:id="@+id/fragmentError"
         android:name="com.example.minimoneybox.common.presentation.fragment.ErrorFragment"
-        tools:layout="@layout/fragment_error" />
+        tools:layout="@layout/fragment_error">
+        <argument
+            android:name="message"
+            app:argType="string"
+            app:nullable="false" />
+    </fragment>
 
     <activity
         android:id="@+id/activityAccounts"

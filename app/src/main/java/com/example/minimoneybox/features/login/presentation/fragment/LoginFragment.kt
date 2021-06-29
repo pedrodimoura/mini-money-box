@@ -50,7 +50,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         viewModel.actions.observe(viewLifecycleOwner) { action ->
             when (action) {
                 is LoginAction.OpenAccountsScreen -> navigateToAccountsActivity()
-                is LoginAction.OpenErrorScreen -> navigateToErrorFragment()
+                is LoginAction.OpenErrorScreen -> navigateToErrorFragment(action.message)
             }
         }
     }
@@ -63,11 +63,17 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         requireActivity().finish()
     }
 
-    private fun navigateToErrorFragment() {
-        findNavController().navigate(LoginFragmentDirections.fromFragmentLoginToErrorFragment())
+    private fun navigateToErrorFragment(message: String) {
+        findNavController().navigate(
+            LoginFragmentDirections.fromFragmentLoginToErrorFragment(message)
+        )
     }
 
     private fun showLoading(show: Boolean) {
+        viewBinding.btnSignIn.isEnabled = show.not()
+        viewBinding.etEmail.isEnabled = show.not()
+        viewBinding.etPassword.isEnabled = show.not()
+        viewBinding.etName.isEnabled = show.not()
         when {
             show -> viewBinding.animation.playAnimation()
             else -> viewBinding.animation.cancelAnimation()

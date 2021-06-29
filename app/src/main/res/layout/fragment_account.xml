@@ -10,8 +10,8 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/greetingsLinearLayout"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@color/aqua_50"
+        android:layout_height="@dimen/height_app_bar"
+        android:background="@color/colorPrimary"
         android:gravity="bottom|center_horizontal"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,6 +41,25 @@
             tools:text="Pedro!" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <TextView
+        android:id="@+id/totalTextView"
+        style="@style/TextAppearance.Bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="8dp"
+        android:padding="@dimen/margin_default"
+        android:textSize="@dimen/textSize_18"
+        app:layout_constraintTop_toBottomOf="@id/greetingsLinearLayout"
+        tools:layout_editor_absoluteX="0dp"
+        tools:text="Total Plan Value: £1,000.00" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        app:layout_constraintTop_toBottomOf="@id/totalTextView" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/loadingLottieAnimation"
@@ -77,7 +96,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/greetingsLinearLayout"
+        app:layout_constraintTop_toBottomOf="@id/divider"
         tools:itemCount="3"
         tools:listitem="@layout/fragment_account_item"
         tools:visibility="visible" />

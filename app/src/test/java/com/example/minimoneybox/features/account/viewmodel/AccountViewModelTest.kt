@@ -1,13 +1,13 @@
 package com.example.minimoneybox.features.account.viewmodel
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.example.minimoneybox.common.data.networking.exceptions.DefaultNetworkError
+import com.example.minimoneybox.common.test.BaseUnitTest
 import com.example.minimoneybox.features.account.domain.model.AccountInformation
 import com.example.minimoneybox.features.account.domain.usecase.FetchAccountInformationUseCase
-import com.example.minimoneybox.features.account.presentation.viewmodel.AccountAction
-import com.example.minimoneybox.features.account.presentation.viewmodel.AccountState
 import com.example.minimoneybox.features.account.presentation.viewmodel.AccountViewModel
+import com.example.minimoneybox.features.account.presentation.viewmodel.action.AccountAction
+import com.example.minimoneybox.features.account.presentation.viewmodel.state.AccountState
 import io.mockk.Runs
 import io.mockk.clearAllMocks
 import io.mockk.coEvery
@@ -17,13 +17,9 @@ import io.mockk.mockk
 import io.mockk.verifySequence
 import org.junit.After
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 
-class AccountViewModelTest {
-
-    @get:Rule
-    val rule = InstantTaskExecutorRule()
+class AccountViewModelTest : BaseUnitTest() {
 
     private val fetchAccountInformationUseCase: FetchAccountInformationUseCase by lazy { mockk() }
 
@@ -69,7 +65,7 @@ class AccountViewModelTest {
     @Test
     fun `SHOULD fetchAccountInformation emits Show Loading, Hide Content, OpenErrorScreen and Hide Loading`() {
         val expectedError = DefaultNetworkError(null)
-        coEvery { fetchAccountInformationUseCase() } throws expectedError
+        coEvery { fetchAccountInformationUseCase.invoke() } throws expectedError
 
         accountViewModel.fetchAccountInformation()
 

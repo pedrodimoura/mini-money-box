@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/productDetailsFragmentRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/productDetailsAppBarLayout"
+        style="@style/AppTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/productDetailsToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_app_bar"
+            app:navigationIcon="@drawable/ic_arrow_back">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:id="@+id/productNameTextView"
+                    style="@style/TextAppearance.Bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textSize_18"
+                    app:layout_constraintBottom_toTopOf="@id/productPlanValueTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="Stocks and Shares" />
+
+                <TextView
+                    android:id="@+id/productPlanValueTextView"
+                    style="@style/TextAppearance.Regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_32"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textSize_18"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="£ 1,000.00" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/moneyboxAmountLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_32"
+        android:background="@drawable/shape_circle_aqua"
+        android:gravity="center"
+        android:minWidth="200dp"
+        android:minHeight="200dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/productDetailsAppBarLayout">
+
+        <TextView
+            android:id="@+id/moneyboxAmount"
+            style="@style/TextAppearance.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize_28"
+            tools:text="£ 50.00" />
+
+        <TextView
+            android:id="@+id/moneyboxTitle"
+            style="@style/TextAppearance.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/product_details_moneybox"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize_18" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loadingLottieAnimation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_default_half"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/moneyboxAmountLinearLayout"
+        app:layout_constraintVertical_chainStyle="spread_inside"
+        app:lottie_autoPlay="false"
+        app:lottie_fileName="@string/lottie_loading"
+        app:lottie_loop="true"
+        app:lottie_scale="1" />
+
+    <com.example.minimoneybox.ui.QuickAddCard
+        android:id="@+id/quickAdd10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_32"
+        android:layout_marginTop="@dimen/margin_default"
+        app:amount="10"
+        app:layout_constraintEnd_toStartOf="@id/quickAdd20"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/moneyboxAmountLinearLayout" />
+
+    <com.example.minimoneybox.ui.QuickAddCard
+        android:id="@+id/quickAdd20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:amount="20"
+        app:layout_constraintEnd_toStartOf="@id/quickAdd30"
+        app:layout_constraintStart_toEndOf="@id/quickAdd10"
+        app:layout_constraintTop_toTopOf="@id/quickAdd10" />
+
+    <com.example.minimoneybox.ui.QuickAddCard
+        android:id="@+id/quickAdd30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_32"
+        app:amount="30"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/quickAdd20"
+        app:layout_constraintTop_toTopOf="@id/quickAdd20" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/quickAddScrollView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="quickAdd10, quickAdd20, quickAdd30" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/successLottieAnimation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_default_half"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/quickAdd10"
+        app:lottie_autoPlay="false"
+        app:lottie_fileName="@string/lottie_success"
+        app:lottie_loop="false"
+        app:lottie_scale="4" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

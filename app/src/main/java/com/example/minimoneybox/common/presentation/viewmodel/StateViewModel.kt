@@ -27,5 +27,4 @@ abstract class StateViewModel<State : UIState, Action : UIAction>(
     fun sendAction(newAction: () -> Action) {
         _actions.value = newAction.invoke()
     }
-
 }

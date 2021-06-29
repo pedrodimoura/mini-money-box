@@ -26,4 +26,9 @@ class AccountResult {
         onView(withId(R.id.recyclerViewAccounts)).check(matches(isDisplayed()))
         return this
     }
+
+    fun checkProductFragmentIsDisplayed(): AccountResult {
+        onView(withId(R.id.productDetailsFragmentRoot)).check(matches(isDisplayed()))
+        return this
+    }
 }

@@ -4,6 +4,7 @@ plugins {
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
     id("androidx.navigation.safeargs.kotlin")
+    id("kotlin-parcelize")
 }
 
 repositories {
@@ -21,6 +22,7 @@ android {
         versionCode = AppConfiguration.versionCode
         versionName = AppConfiguration.versionName
         testInstrumentationRunner(AppConfiguration.instrumentationRunner)
+        multiDexEnabled = true
     }
 
     buildTypes {
@@ -69,6 +71,7 @@ android {
 
 dependencies {
     implementation(Libs.kotlinStdLib)
+    implementation("androidx.multidex:multidex:2.0.1")
 
     implementation(Libs.coreKtx)
     implementation(Libs.appCompat)
@@ -120,6 +123,7 @@ dependencies {
     androidTestImplementation(TestLibs.extJunit)
     androidTestImplementation(TestLibs.espressoCore)
     androidTestImplementation(TestLibs.espressoIntent)
+    androidTestImplementation(TestLibs.espressoContrib)
     androidTestImplementation(TestLibs.mockWebServer)
     androidTestImplementation(TestLibs.coreKtxTesting)
     androidTestImplementation(TestLibs.okHttpIdlingResource)

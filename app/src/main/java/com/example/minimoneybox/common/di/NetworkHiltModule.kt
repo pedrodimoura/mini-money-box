@@ -99,11 +99,14 @@ object NetworkHiltModule {
         @LoggingInterceptor loggingInterceptor: Interceptor,
         authenticator: Authenticator,
     ): OkHttpClient {
-        return OkHttpClient.Builder()
+        val okHttpClientBuilder = OkHttpClient.Builder()
             .authenticator(authenticator)
             .addInterceptor(apiKeyInterceptor)
-            .addInterceptor(loggingInterceptor)
-            .build()
+
+        if (BuildConfig.DEBUG)
+            okHttpClientBuilder.addInterceptor(loggingInterceptor)
+
+        return okHttpClientBuilder.build()
     }
 
     @Provides

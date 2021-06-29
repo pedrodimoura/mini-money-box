@@ -6,10 +6,18 @@
     <dimen name="line_height_button_primary">20sp</dimen>
     <dimen name="margin_default">16dp</dimen>
     <dimen name="margin_32">32dp</dimen>
+    <dimen name="margin_64">64dp</dimen>
     <dimen name="margin_default_half">8dp</dimen>
     <dimen name="margin_4">4dp</dimen>
 
+    <dimen name="height_app_bar">200dp</dimen>
+
+    <dimen name="textSize_12">12sp</dimen>
+    <dimen name="textSize_16">16sp</dimen>
     <dimen name="textSize_18">18sp</dimen>
     <dimen name="textSize_28">28sp</dimen>
+
+    <dimen name="quick_add_min_height">80dp</dimen>
+    <dimen name="quick_add_min_width">100dp</dimen>
 
 </resources>

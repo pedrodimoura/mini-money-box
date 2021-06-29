@@ -19,16 +19,23 @@
     <!--    Lottie files-->
     <string name="lottie_owl_coin_shower">owl_coin_shower.json</string>
     <string name="lottie_loading">coin_loading.json</string>
+    <string name="lottie_success">success.json</string>
+    <string name="lottie_failure">failure.json</string>
 
-    <string name="error_feature_title">Generic Error Screen</string>
+    <string name="error_feature_title">Something went wrong!</string>
 
     <!-- Account Activity -->
     <string name="account_activity_greeting_no_name">Hello!</string>
     <string name="account_activity_greeting_header_with_name">Hello,</string>
     <string name="account_activity_greeting_body">%s!</string>
+    <string name="total_plan_value">Total plan value: %s</string>
     <string name="loading_account_information_message">Wait a sec&#8230; \nFetching your account information</string>
 
     <string name="text_view_plan_value">PlanValue:</string>
     <string name="text_view_moneybox">Moneybox:</string>
+
+    <string name="quick_add_title">Quick add</string>
+    <string name="loading_quick_add_message">Wait a sec&#8230; \nAdding your money!</string>
+    <string name="product_details_moneybox">Moneybox</string>
 
 </resources>

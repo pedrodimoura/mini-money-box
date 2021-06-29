@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class ProductResponse(
     @SerializedName("Id")
-    val id: String,
+    val id: Int,
     @SerializedName("PlanValue")
     val planValue: Float,
     @SerializedName("Moneybox")

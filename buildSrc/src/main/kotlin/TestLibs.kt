@@ -4,6 +4,7 @@ object TestLibs {
     const val extJunit = "androidx.test.ext:junit:${Version.extJunit}"
     const val espressoCore = "androidx.test.espresso:espresso-core:${Version.espresso}"
     const val espressoIntent = "androidx.test.espresso:espresso-intents:${Version.espresso}"
+    const val espressoContrib = "androidx.test.espresso:espresso-contrib:${Version.espresso}"
 
     const val hiltAndroidTesting = "com.google.dagger:hilt-android-testing:${Version.hilt}"
     const val hiltCompiler = "com.google.dagger:hilt-compiler:${Version.hilt}"

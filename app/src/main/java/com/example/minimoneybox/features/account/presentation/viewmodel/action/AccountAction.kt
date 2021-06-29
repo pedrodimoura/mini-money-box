@@ -1,4 +1,4 @@
-package com.example.minimoneybox.features.account.presentation.viewmodel
+package com.example.minimoneybox.features.account.presentation.viewmodel.action
 
 import com.example.minimoneybox.common.presentation.viewmodel.UIAction
 import com.example.minimoneybox.features.account.domain.model.AccountInformation

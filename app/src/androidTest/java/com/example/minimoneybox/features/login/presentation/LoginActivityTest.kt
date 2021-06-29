@@ -7,8 +7,9 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.minimoneybox.R
 import com.example.minimoneybox.common.NetworkingTest
 import com.example.minimoneybox.common.di.NetworkHiltModule
-import com.example.minimoneybox.features.login.presentation.activity.LoginActivity
+import com.example.minimoneybox.features.account.data.datasource.remote.service.ACCOUNT_INFORMATION_ENDPOINT
 import com.example.minimoneybox.features.login.data.datasource.remote.service.USERS_LOGIN_ENDPOINT
+import com.example.minimoneybox.features.login.presentation.activity.LoginActivity
 import com.example.minimoneybox.features.login.robot.LoginRobot
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules
@@ -35,6 +36,9 @@ class LoginActivityTest : NetworkingTest() {
                 url.contains(USERS_LOGIN_ENDPOINT) -> MockResponse()
                     .setResponseCode(HttpURLConnection.HTTP_OK)
                     .setBody(readStringFile("responses/authentication_response.json"))
+                url.contains(ACCOUNT_INFORMATION_ENDPOINT) -> MockResponse()
+                    .setResponseCode(HttpURLConnection.HTTP_OK)
+                    .setBody(readStringFile("responses/account_information_response.json"))
                 else -> MockResponse()
                     .setResponseCode(HttpURLConnection.HTTP_NOT_FOUND)
             }

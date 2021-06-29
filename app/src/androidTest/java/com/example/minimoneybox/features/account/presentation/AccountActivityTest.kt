@@ -10,6 +10,7 @@ import com.example.minimoneybox.common.di.NetworkHiltModule
 import com.example.minimoneybox.features.account.data.datasource.remote.service.ACCOUNT_INFORMATION_ENDPOINT
 import com.example.minimoneybox.features.account.presentation.activity.AccountActivity
 import com.example.minimoneybox.features.account.robot.AccountResult
+import com.example.minimoneybox.features.account.robot.AccountRobot
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules
 import java.net.HttpURLConnection
@@ -21,7 +22,6 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
-private const val TAG = "AccountActivityTest"
 private const val DEFAULT_NAME_ARGUMENT_KEY = "name"
 private const val DEFAULT_NAME_ARGUMENT = "Pedro Moura"
 
@@ -82,9 +82,17 @@ class AccountActivityTest : NetworkingTest() {
             .checkAccountListIsVisible()
     }
 
+    @Test
+    fun shouldOpenProductDetailsFragment() {
+        activityScenario = launchActivity(getDefaultIntent())
+
+        AccountRobot()
+            .clickOnFirstProduct()
+            .checkProductFragmentIsDisplayed()
+    }
+
     private fun getDefaultIntent(nameArg: String? = null): Intent =
         Intent(ApplicationProvider.getApplicationContext(), AccountActivity::class.java).apply {
             putExtra(DEFAULT_NAME_ARGUMENT_KEY, nameArg ?: DEFAULT_NAME_ARGUMENT)
         }
-
 }

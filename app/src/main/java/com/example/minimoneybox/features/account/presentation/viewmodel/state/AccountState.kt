@@ -1,4 +1,4 @@
-package com.example.minimoneybox.features.account.presentation.viewmodel
+package com.example.minimoneybox.features.account.presentation.viewmodel.state
 
 import com.example.minimoneybox.common.presentation.viewmodel.UIState
 
